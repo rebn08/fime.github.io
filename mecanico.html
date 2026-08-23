@@ -1,268 +1,363 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ingeniería Mecánico Electricista - FIME U.N.</title>
+<title>Malla Curricular - Ingeniería Mecánico Electricista</title>
 <link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --blue-deep:#102A54;
-    --blue:#1E4CA8;
-    --blue-bright:#3B6FE0;
-    --yellow:#F4B400;
-    --paper:#FBFBF9;
-    --ink:#0E1B33;
-    --slate:#5C6B84;
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
-  *{box-sizing:border-box;}
-  body{font-family:'Space Grotesk',sans-serif; background:var(--paper); color:var(--ink);}
-  .font-display{font-family:'Fraunces',serif;}
-  .nav-link{position:relative;}
-  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--yellow);transition:width .3s ease;}
-  .nav-link:hover::after{width:100%;}
-  .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);}
-  @media (min-width:768px){ .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);} }
-  .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
-  .fade-up.in{opacity:1; transform:translateY(0);}
-  ::selection{background:var(--yellow); color:var(--blue-deep);}
+  .font-display { font-family: 'Fraunces', serif; }
+  
+  /* Clases de colores para las materias (Colores Pastel Armoniosos) */
+  .cb { background-color: #fed7aa; border-color: #fdba74; } /* Naranja - Ciencias Básicas */
+  .ci { background-color: #bae6fd; border-color: #7dd3fc; } /* Azul Claro - Ciencias de la Ing */
+  .ia { background-color: #e9d5ff; border-color: #d8b4fe; } /* Morado - Ing Aplicada */
+  .di { background-color: #c7d2fe; border-color: #a5b4fc; } /* Índigo Pastel - Diseño de Ing */
+  .csh { background-color: #fecdd3; border-color: #fda4af; } /* Rosa - Cien Soc y Hum */
+  .ea { background-color: #d9f99d; border-color: #bef264; } /* Verde Claro - Econ Admin */
+  .cc { background-color: #e5e5e4; border-color: #a8a29e; } /* Beige - Cursos Comp */
+  .ic { background-color: #fef08a; border-color: #fde047; } /* Amarillo Pastel - Inglés */
+  .oc { background-color: #bbf7d0; border-color: #86efac; } /* Verde - Extra curriculares */
+  
+  .materia-card {
+    border-width: 1px;
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    page-break-inside: avoid;
+    position: relative;
+  }
+  .materia-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #475569;
+  }
+  .materia-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  .materia-footer {
+    text-align: right;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+  
+  /* Estilo para las flechas de seriación */
+  .seriation-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.5rem;
+    color: #3b82f6;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  @media print {
+    body { background-color: white; padding: 0; margin: 0; }
+    .print-wrapper { padding: 10mm; zoom: 0.85; }
+    .hide-on-print { display: none !important; }
+  }
 </style>
 </head>
-<body class="antialiased">
+<body class="antialiased min-h-screen">
 
-<!-- NAVBAR -->
-<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.5);">
-  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
-    <a href="index.html" class="flex items-center">
-      <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-12 w-auto object-contain">
-    </a>
-    <div class="hidden md:flex items-center gap-8 text-sm text-white/90 font-medium">
-      <a href="index.html#oferta" class="nav-link">Oferta educativa</a>
-      <a href="index.html#vida" class="nav-link">Vida estudiantil</a>
-      <a href="index.html#admisiones" class="nav-link">Admisiones</a>
-      <a href="#footer" class="nav-link">Contacto</a>
+<!-- HEADER PARA PÁGINA WEB (Se oculta al imprimir) -->
+<header class="bg-[#102A54] text-white py-4 px-6 shadow-md hide-on-print flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-10">
+    <h1 class="font-display font-semibold text-xl">Malla Curricular</h1>
+  </div>
+  <div class="flex items-center gap-4">
+    <!-- SELECTOR DE ACENTUACIÓN INTERACTIVO -->
+    <div class="bg-white/10 p-1 rounded-lg flex gap-1">
+      <button onclick="cambiarAcentuacion('mecanica')" id="btn-mecanica" class="px-4 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]">Acentuación Mecánica</button>
+      <button onclick="cambiarAcentuacion('electrica')" id="btn-electrica" class="px-4 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20">Acentuación Eléctrica - Electrónica</button>
     </div>
-    <div class="flex items-center gap-3">
-      <a href="index.html#admisiones" class="hidden md:inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold text-sm px-5 py-2.5 rounded-full hover:brightness-105 active:scale-95 transition">
-        Contáctanos
-      </a>
-      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white p-2">
-        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-  <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0" style="background-color: rgba(16, 42, 84, 0.95);">
-    <div class="flex flex-col gap-1 px-5 pb-5 text-white/90 font-medium">
-      <a href="index.html#oferta" class="py-3 border-b border-white/10">Oferta educativa</a>
-      <a href="index.html#vida" class="py-3 border-b border-white/10">Vida estudiantil</a>
-      <a href="index.html#admisiones" class="py-3 border-b border-white/10">Admisiones</a>
-      <a href="#footer" class="py-3 border-b border-white/10">Contacto</a>
-      <a href="index.html#admisiones" class="mt-4 mb-2 text-center bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-5 py-3 rounded-full">Contáctanos</a>
-    </div>
+    <button onclick="window.print()" class="bg-[#F4B400] text-[#102A54] px-4 py-2 rounded-full font-bold text-sm hover:brightness-105 transition flex items-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+      Imprimir a PDF
+    </button>
   </div>
 </header>
 
-<!-- HERO CON IMAGEN ESTÁTICA Y OPACIDAD (NUEVA IMAGEN MECÁNICA/ELÉCTRICA) -->
-<section class="relative min-h-[70vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
-  <!-- Fotografía representativa: Línea de producción industrial automatizada -->
-  <img src="https://images.unsplash.com/photo-1613665813446-82a78c468a1d?q=80&w=2058&auto=format&fit=crop" alt="Línea de automatización industrial y robótica" class="absolute inset-0 w-full h-full object-cover">
+<div class="print-wrapper max-w-full overflow-x-auto p-6 md:p-10">
   
-  <!-- Doble capa de opacidad para garantizar lectura: un tono azul uniforme y un gradiente inferior -->
-  <div class="absolute inset-0 bg-[#102A54] opacity-75"></div>
-  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
-
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-20 w-full fade-up">
-    <p class="text-[var(--yellow)] font-semibold tracking-[0.2em] text-xs md:text-sm mb-4">LICENCIATURA</p>
-    <h1 class="font-display font-semibold text-white text-4xl sm:text-6xl md:text-7xl leading-[1.05] max-w-4xl mb-6">
-      Ingeniería Mecánico Electricista
-    </h1>
-    <p class="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Integra el diseño mecánico avanzado con sistemas de potencia y control eléctrico. Transforma la industria a través de la automatización y el diseño estructural eficiente.
-    </p>
+  <!-- ENCABEZADO INSTITUCIONAL -->
+  <div class="flex items-center justify-between mb-8 min-w-[1200px]">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo UAdeC FIME" class="h-20" style="filter: invert(1) brightness(0.2);">
+    <div class="text-center flex-grow">
+      <h2 class="font-display text-2xl font-bold text-gray-800">Universidad Autónoma de Coahuila</h2>
+      <h3 class="text-lg font-semibold text-gray-600 mt-1">Facultad de Ingeniería Mecánica y Eléctrica - Unidad Norte</h3>
+    </div>
+    <div class="text-right border-l-4 border-gray-800 pl-6 py-2">
+      <h1 class="font-display text-2xl font-bold text-[#102A54]">Ingeniero Mecánico Electricista</h1>
+      <p id="titulo-acentuacion" class="text-sm font-semibold text-gray-600 mt-0.5">Acentuación Mecánica</p>
+    </div>
   </div>
-</section>
 
-<!-- CONTENIDO DE LA CARRERA -->
-<section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
-  
-  <div class="grid md:grid-cols-12 gap-12 lg:gap-20">
-    <!-- Columna Izquierda: Descripción -->
-    <div class="md:col-span-7 fade-up">
-      <h2 class="font-display text-3xl md:text-4xl text-[var(--blue-deep)] font-semibold mb-6">El Motor de la Industria Moderna</h2>
-      <p class="text-[var(--slate)] leading-relaxed mb-6">
-        La Ingeniería Mecánico Electricista en FIME Unidad Norte forma profesionales integrales, capaces de proyectar, construir y mantener los sistemas electromecánicos que mueven a la industria contemporánea.
-      </p>
-      <p class="text-[var(--slate)] leading-relaxed mb-8">
-        Nuestros estudiantes dominan herramientas tecnológicas de vanguardia. Desde el modelado 3D y simulaciones de esfuerzos mecánicos, hasta el diseño y análisis de circuitos de electrónica analógica y de potencia, preparándolos para resolver problemas reales en piso de producción.
-      </p>
+  <!-- MALLA CURRICULAR GRID -->
+  <div class="grid grid-cols-9 gap-3 min-w-[1300px]">
+    
+    <!-- SEMESTRE 1 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">1</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Álgebra</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Física</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>4+2</span><span>6</span></div><div class="materia-title">Química</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Programación</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Comunicación Efectiva</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Ciencia y Tecnología</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Pre-Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 1</div><div class="materia-footer">OC</div></div>
+    </div>
 
-      <!-- Imagen Intermedia de Laboratorio/Prácticas -->
-      <div class="my-10 rounded-2xl overflow-hidden shadow-lg h-64 md:h-80 relative fade-up">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop" alt="Prácticas de diseño industrial, mecánica y electrónica de potencia" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+    <!-- SEMESTRE 2 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">2</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Diferencial</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Estática</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Ciencia y Tecnología de los Materiales</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electricidad y Magnetismo</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Probabilidad y Estadística</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Álgebra Lineal</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 2</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 3 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">3</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Integral</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Dinámica</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>4+0</span><span>4</span></div><div class="materia-title">Administración y Desarrollo de Proyectos</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>2+2</span><span>4</span></div><div class="materia-title">Dibujo Asistido por Computadora</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Control Estadístico de la Calidad</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Circuitos Eléctricos de Corriente Directa</div><div class="materia-footer">CI</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Elemental</div><div class="materia-footer">IC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 3</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 4 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">4</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Multivariable</div><div class="materia-footer">CB</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Análisis Numérico</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>2+2</span><span>4</span></div><div class="materia-title">Mediciones Eléctricas</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Termodinámica Básica</div><div class="materia-footer">CI</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica de Materiales I</div><div class="materia-footer">CI</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Circuitos Eléctricos de Corriente Alterna</div><div class="materia-footer">CI</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Pre-Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 4</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 5 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">5</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Ecuaciones Diferenciales</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica de los Fluidos</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Máquinas Eléctricas I</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>2+2</span><span>4</span></div><div class="materia-title">Ingeniería Térmica</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica de Materiales II</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>2+2</span><span>4</span></div><div class="materia-title">Mecanismos</div><div class="materia-footer">IA</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 5</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 6 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">6</div>
+      
+      <!-- CONTENIDO CAMBIANTE SEMESTRE 6 -->
+      <div id="col6-mecanica" class="contents">
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Metrología y Normalización</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Máquinas Hidráulicas y Neumáticas</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño Mecánico Asistido</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Heat Transfer</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño de Elementos de Máquinas I</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Organización Industrial</div><div class="materia-footer">EA</div></div>
       </div>
 
-      <h3 class="font-display text-2xl text-[var(--blue)] font-semibold mb-4">Áreas de Especialización</h3>
-      <ul class="space-y-4 mb-8">
-        <li class="flex items-start">
-          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Diseño Mecánico y Simulación:</strong> Modelado CAD avanzado, análisis de elementos finitos y evaluación de esfuerzos y deformaciones en componentes mecánicos estructurales.</span>
-        </li>
-        <li class="flex items-start">
-          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Sistemas Eléctricos y de Potencia:</strong> Diseño, implementación y diagnóstico de instalaciones eléctricas industriales, electrónica analógica y control de motores de alta capacidad.</span>
-        </li>
-        <li class="flex items-start">
-          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Automatización Industrial:</strong> Integración de sistemas electromecánicos y optimización de procesos de manufactura mediante tecnologías de control avanzado.</span>
-        </li>
-      </ul>
+      <div id="col6-electrica" class="contents" style="display: none;">
+        <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Circuitos Digitales</div><div class="materia-footer">CI</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Sistemas Eléctricos de Potencia</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electrónica Analógica Básica</div><div class="materia-footer">CI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Máquinas Eléctricas II</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Teoría de Control</div><div class="materia-footer">CI</div></div>
+        <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Organización Industrial</div><div class="materia-footer">EA</div></div>
+      </div>
+
+      <div class="materia-card cc"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Inglés Técnico AM</div><div class="materia-footer">CC</div></div>
+      <div class="seriation-arrow">↓</div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 6</div><div class="materia-footer">OC</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 1</div><div class="materia-footer">IA</div></div>
     </div>
 
-    <!-- Columna Derecha: Tarjeta de Info Rápida y Malla Curricular -->
-    <div class="md:col-span-5 fade-up">
-      <div class="bg-white rounded-2xl shadow-xl border border-black/5 p-8 sticky top-32">
-        <h3 class="font-display text-xl text-[var(--blue-deep)] font-semibold mb-6 border-b pb-4">Detalles del Programa</h3>
-        
-        <div class="space-y-5">
-          <div>
-            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Duración</p>
-            <p class="text-[var(--ink)] font-medium">9 Semestres</p>
-          </div>
-          <div>
-            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Modalidad</p>
-            <p class="text-[var(--ink)] font-medium">Presencial / Tiempo Completo</p>
-          </div>
-          <div>
-            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Campo Laboral</p>
-            <p class="text-[var(--ink)] font-medium">Industria automotriz, metalmecánica, sector energético, plantas de manufactura y diseño estructural.</p>
-          </div>
-        </div>
+    <!-- SEMESTRE 7 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">7</div>
+      
+      <!-- CONTENIDO CAMBIANTE SEMESTRE 7 -->
+      <div id="col7-mecanica" class="contents">
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Procesos de Manufactura</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Aire Acondicionado y Refrigeración</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño Mecánico Asistido II</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Máquinas Térmicas y Combustión Interna</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño de Elementos de Máquinas II</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Fundamentals of Robotics</div><div class="materia-footer">IA</div></div>
+      </div>
 
-        <!-- Botón para Malla Curricular -->
-        <a href="malla_mecanica.html" target="_blank" rel="noopener noreferrer" class="mt-8 w-full flex items-center justify-center gap-3 bg-[var(--blue-deep)] text-white font-semibold py-4 px-6 rounded-full hover:bg-[var(--blue)] active:scale-95 transition-all shadow-md group">
-          <svg class="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          Ver Malla Curricular
-        </a>
-        
-        <div class="mt-4 text-center">
-          <a href="index.html#admisiones" class="text-sm text-[var(--blue)] font-medium hover:underline">Ir a proceso de admisión &rarr;</a>
-        </div>
+      <div id="col7-electrica" class="contents" style="display: none;">
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Microcontroladores</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Plantas y Subestaciones Eléctricas</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electrónica Industrial</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Protección de Sistemas Eléctricos</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Instrumentación y Control de Procesos</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Fundamentals of Robotics</div><div class="materia-footer">IA</div></div>
+      </div>
+
+      <div class="materia-card csh"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title">Educación para la Ciudadanía y DD HH</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Ética Profesional</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 2</div><div class="materia-footer">IA</div></div>
+    </div>
+
+    <!-- SEMESTRE 8 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">8</div>
+      
+      <!-- CONTENIDO CAMBIANTE SEMESTRE 8 -->
+      <div id="col8-mecanica" class="contents">
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Manufactura Automatizada</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Industria 5.0</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Método de los Elementos Finitos</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+1</span><span>4</span></div><div class="materia-title">Instalaciones y Mantenimiento Eléctrico</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Energías Renovables y Eficiencia Energética</div><div class="materia-footer">IA</div></div>
+      </div>
+
+      <div id="col8-electrica" class="contents" style="display: none;">
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Manejo de Sistemas Embebidos</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Industria 5.0</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electrónica de Potencia</div><div class="materia-footer">DI</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+1</span><span>4</span></div><div class="materia-title">Instalaciones y Mantenimiento Eléctrico</div><div class="materia-footer">IA</div></div>
+        <div class="materia-card ia"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Energías Renovables y Eficiencia Energética</div><div class="materia-footer">IA</div></div>
+      </div>
+
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Seminario de Investigación</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Desarrollo Sustentable</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card ic border-2 border-gray-400 h-16"><div class="materia-header"><span>0+0</span><span>10</span></div><div class="materia-title">Servicio Social</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 3</div><div class="materia-footer">IA</div></div>
+    </div>
+
+    <!-- SEMESTRE 9 -->
+    <div class="flex flex-col gap-1">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">9</div>
+      <div class="materia-card ic border-2 border-gray-400 h-28 mt-4">
+        <div class="materia-header"><span>0+0</span><span>10</span></div>
+        <div class="materia-title">Prácticas Profesionales<br><span class="text-xs font-normal mt-1">480 HRS</span></div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- FOOTER -->
-<footer id="footer" class="bg-[var(--ink)] text-white/70 pt-16 pb-8">
-  <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
-    <div class="col-span-2 md:col-span-1">
-      <p class="font-display font-semibold text-white text-xl mb-3">FIME Unidad Norte</p>
-      <p class="text-sm leading-relaxed max-w-[26ch]">69 Aniversario (1957–2026). Formando ingenieros con excelencia y visión global.</p>
-      <div class="flex gap-3 mt-5">
-        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
-        </a>
-        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.7.8 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.8.7-1.5 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.7-.8-1-1.5-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.8-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1 0-1.6.2-2 .4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2C2.8 9.5 2.8 9.9 2.8 13s0 3.5.1 4.7c0 1 .2 1.6.4 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.6-.2 2-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.6-.4-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.8a3.6 3.6 0 1 0 0 7.3 3.6 3.6 0 0 0 0-7.3Zm5.7-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
-        </a>
-        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.9 8.4H3.3V20h3.6V8.4ZM5.1 3.1a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM20.7 20h-3.6v-6.3c0-1.5-.5-2.5-1.8-2.5-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20H9.7s.1-10.6 0-11.6h3.6v1.6c.5-.7 1.3-1.8 3.2-1.8 2.3 0 4.1 1.5 4.1 4.8V20Z"/></svg>
-        </a>
-      </div>
+  </div> <!-- FIN GRID MALLA -->
+
+  <!-- LEYENDA DE COLORES Y TOTALES -->
+  <div class="mt-12 bg-white p-4 rounded-xl border border-gray-200 shadow-sm max-w-xl">
+    <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Áreas del Conocimiento</h4>
+    <div class="grid grid-cols-2 gap-y-2 text-xs">
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cb border border-orange-300"></div><span>CB - Ciencias Básicas</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ci border border-sky-300"></div><span>CI - Ciencias de la Ing.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ia border border-purple-300"></div><span>IA - Ing. Aplicada</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded di border border-indigo-300"></div><span>DI - Diseño de Ing.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded csh border border-pink-300"></div><span>CSH - Ciencias Soc y Hum</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ea border border-lime-300"></div><span>EA - Económico Admin.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cc border border-stone-300"></div><span>CC - Cursos Complementarios</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ic border border-yellow-300"></div><span>IC - Inglés Curricular</span></div>
     </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Admisiones</p>
-      <ul class="space-y-2.5 text-sm">
-        <li><a href="index.html#oferta" class="hover:text-white transition">Oferta educativa</a></li>
-        <li><a href="index.html#admisiones" class="hover:text-white transition">Proceso de Ingreso</a></li>
-        <li><a href="index.html#admisiones" class="hover:text-white transition">Cuota interna e inscripción</a></li>
-        <li><a href="#" class="hover:text-white transition">Becas y Apoyos</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad UAdeC</p>
-      <ul class="space-y-2.5 text-sm">
-        <li><a href="index.html#vida" class="hover:text-white transition">Grupos Estudiantiles</a></li>
-        <li><a href="#" class="hover:text-white transition">Egresados</a></li>
-        <li><a href="#" class="hover:text-white transition">CIDEI 2026</a></li>
-      </ul>
-    </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Contacto</p>
-      <ul class="space-y-2.5 text-sm">
-        <li>Campus Monclova, Coahuila</li>
-        <li>admisiones@fime.uadec.mx</li>
-        <li>+52 866 123 4567</li>
-      </ul>
+    <div class="mt-4 pt-3 border-t text-sm font-bold flex justify-between px-2">
+      <span>Total de Asignaturas: <span class="text-[#102A54]">65</span></span>
+      <span>Total de Créditos: <span class="text-[#102A54]">303</span></span>
     </div>
   </div>
-  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
-    <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
-    <div class="flex gap-5">
-      <a href="#" class="hover:text-white/70 transition">Aviso de privacidad</a>
-      <a href="#" class="hover:text-white/70 transition">Directorio</a>
-    </div>
-  </div>
-</footer>
+
+</div>
 
 <script>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const iconOpen = document.getElementById('icon-open');
-  const iconClose = document.getElementById('icon-close');
-  let menuOpen = false;
+  function cambiarAcentuacion(tipo) {
+    const btnMec = document.getElementById('btn-mecanica');
+    const btnElec = document.getElementById('btn-electrica');
+    const titulo = document.getElementById('titulo-acentuacion');
+    
+    const col6Mec = document.getElementById('col6-mecanica');
+    const col6Elec = document.getElementById('col6-electrica');
+    const col7Mec = document.getElementById('col7-mecanica');
+    const col7Elec = document.getElementById('col7-electrica');
+    const col8Mec = document.getElementById('col8-mecanica');
+    const col8Elec = document.getElementById('col8-electrica');
 
-  menuBtn.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    menuBtn.setAttribute('aria-expanded', String(menuOpen));
-    if (menuOpen) {
-      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
-      mobileMenu.style.opacity = '1';
-      iconOpen.classList.add('hidden');
-      iconClose.classList.remove('hidden');
+    if(tipo === 'mecanica') {
+      btnMec.className = "px-4 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";
+      btnElec.className = "px-4 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      titulo.textContent = "Acentuación Mecánica";
+      
+      col6Mec.style.display = 'contents';
+      col6Elec.style.display = 'none';
+      col7Mec.style.display = 'contents';
+      col7Elec.style.display = 'none';
+      col8Mec.style.display = 'contents';
+      col8Elec.style.display = 'none';
     } else {
-      mobileMenu.style.maxHeight = '0px';
-      mobileMenu.style.opacity = '0';
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
+      btnElec.className = "px-4 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";
+      btnMec.className = "px-4 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      titulo.textContent = "Acentuación Eléctrica - Electrónica";
+      
+      col6Mec.style.display = 'none';
+      col6Elec.style.display = 'contents';
+      col7Mec.style.display = 'none';
+      col7Elec.style.display = 'contents';
+      col8Mec.style.display = 'none';
+      col8Elec.style.display = 'contents';
     }
-  });
-
-  // Close mobile menu after clicking a link
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuOpen = false;
-      mobileMenu.style.maxHeight = '0px';
-      mobileMenu.style.opacity = '0';
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  }
 </script>
-
 </body>
 </html>

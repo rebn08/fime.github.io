@@ -39,6 +39,7 @@
     height: 6rem;
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
     page-break-inside: avoid;
+    position: relative;
   }
   .materia-header {
     display: flex;
@@ -66,6 +67,20 @@
     color: #64748b;
   }
 
+  /* Insignias de Seriación (Etiquetas de dependencia claras) */
+  .badge-seriation {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #2563eb;
+    color: white;
+    font-size: 0.5rem;
+    font-weight: bold;
+    padding: 1px 4px;
+    border-radius: 9999px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  }
+
   @media print {
     body { background-color: white; padding: 0; margin: 0; }
     .print-wrapper { padding: 10mm; zoom: 0.85; }
@@ -82,7 +97,6 @@
     <h1 class="font-display font-semibold text-xl">Malla Curricular</h1>
   </div>
   <div class="flex items-center gap-4">
-    <!-- SELECTOR DE ACENTUACIÓN INTERACTIVO -->
     <div class="bg-white/10 p-1 rounded-lg flex gap-1">
       <button onclick="cambiarAcentuacion('mecanica')" id="btn-mecanica" class="px-4 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]">Acentuación Mecánica</button>
       <button onclick="cambiarAcentuacion('electrica')" id="btn-electrica" class="px-4 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20">Acentuación Eléctrica - Electrónica</button>
@@ -116,12 +130,30 @@
     <div class="flex flex-col gap-2">
       <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">1</div>
       <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Álgebra</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Física</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card cb"><div class="materia-header"><span>4+2</span><span>6</span></div><div class="materia-title">Química</div><div class="materia-footer">CB</div></div>
+      <!-- FISICA (Origen de seriación hacia Estática y Electricidad) -->
+      <div class="materia-card cb">
+        <span class="badge-seriation" title="Pre-requisito">Req</span>
+        <div class="materia-header"><span>3+2</span><span>5</span></div>
+        <div class="materia-title">Física</div>
+        <div class="materia-footer">CB</div>
+      </div>
+      <!-- QUIMICA (Origen hacia Ciencia de Materiales) -->
+      <div class="materia-card cb">
+        <span class="badge-seriation" title="Pre-requisito">Req</span>
+        <div class="materia-header"><span>4+2</span><span>6</span></div>
+        <div class="materia-title">Química</div>
+        <div class="materia-footer">CB</div>
+      </div>
       <div class="materia-card cc"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Programación</div><div class="materia-footer">CC</div></div>
       <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Comunicación Efectiva</div><div class="materia-footer">CSH</div></div>
       <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Ciencia y Tecnología</div><div class="materia-footer">CSH</div></div>
-      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Pre-Inicial</div><div class="materia-footer">IC</div></div>
+      <!-- INGLES PRE-INICIAL (Origen hacia Inglés Inicial) -->
+      <div class="materia-card ic">
+        <span class="badge-seriation" title="Pre-requisito">Req</span>
+        <div class="materia-header"><span>5+2</span><span>7</span></div>
+        <div class="materia-title">Inglés Pre-Inicial</div>
+        <div class="materia-footer">IC</div>
+      </div>
       <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 1</div><div class="materia-footer">OC</div></div>
     </div>
 
@@ -129,12 +161,32 @@
     <div class="flex flex-col gap-2">
       <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">2</div>
       <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Diferencial</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Estática</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Ciencia y Tecnología de los Materiales</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electricidad y Magnetismo</div><div class="materia-footer">CI</div></div>
+      <!-- ESTATICA (Deriva de Física) -->
+      <div class="materia-card cb border-blue-400 border-2">
+        <div class="materia-header"><span>3+2</span><span>5</span></div>
+        <div class="materia-title">Estática <span class="text-[0.5rem] text-blue-600 block">(← Física)</span></div>
+        <div class="materia-footer">CB</div>
+      </div>
+      <!-- CIENCIA DE MATERIALES (Deriva de Química) -->
+      <div class="materia-card cb border-blue-400 border-2">
+        <div class="materia-header"><span>3+2</span><span>5</span></div>
+        <div class="materia-title">Ciencia y Tecnología de los Materiales <span class="text-[0.5rem] text-blue-600 block">(← Química)</span></div>
+        <div class="materia-footer">CB</div>
+      </div>
+      <!-- ELECTRICIDAD Y MAGNETISMO (Deriva de Física) -->
+      <div class="materia-card ci border-blue-400 border-2">
+        <div class="materia-header"><span>3+2</span><span>5</span></div>
+        <div class="materia-title">Electricidad y Magnetismo <span class="text-[0.5rem] text-blue-600 block">(← Física)</span></div>
+        <div class="materia-footer">CI</div>
+      </div>
       <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Probabilidad y Estadística</div><div class="materia-footer">CB</div></div>
       <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Álgebra Lineal</div><div class="materia-footer">CB</div></div>
-      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Inicial</div><div class="materia-footer">IC</div></div>
+      <!-- INGLES INICIAL (Deriva de Inglés Pre-Inicial) -->
+      <div class="materia-card ic border-blue-400 border-2">
+        <div class="materia-header"><span>5+2</span><span>7</span></div>
+        <div class="materia-title">Inglés Inicial <span class="text-[0.5rem] text-blue-600 block">(← Pre-Inicial)</span></div>
+        <div class="materia-footer">IC</div>
+      </div>
       <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 2</div><div class="materia-footer">OC</div></div>
     </div>
 
@@ -273,7 +325,7 @@
 
   <!-- LEYENDA DE COLORES Y TOTALES -->
   <div class="mt-12 bg-white p-4 rounded-xl border border-gray-200 shadow-sm max-w-xl">
-    <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Áreas del Conocimiento</h4>
+    <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Áreas del Conocimiento y Seriación</h4>
     <div class="grid grid-cols-2 gap-y-2 text-xs">
       <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cb border border-orange-300"></div><span>CB - Ciencias Básicas</span></div>
       <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ci border border-sky-300"></div><span>CI - Ciencias de la Ing.</span></div>
@@ -284,7 +336,10 @@
       <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cc border border-stone-300"></div><span>CC - Cursos Complementarios</span></div>
       <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ic border border-yellow-300"></div><span>IC - Inglés Curricular</span></div>
     </div>
-    <div class="mt-4 pt-3 border-t text-sm font-bold flex justify-between px-2">
+    <div class="mt-3 pt-2 border-t text-xs text-blue-700 font-medium">
+      * Nota: Las materias con indicador <span class="bg-blue-600 text-white px-1.5 py-0.5 rounded text-[0.5rem]">Req</span> señalan materias con pre-requisito directo detallado en la tarjeta de destino.
+    </div>
+    <div class="mt-3 pt-3 border-t text-sm font-bold flex justify-between px-2">
       <span>Total de Asignaturas: <span class="text-[#102A54]">65</span></span>
       <span>Total de Créditos: <span class="text-[#102A54]">303</span></span>
     </div>
@@ -304,6 +359,9 @@
     const col7Elec = document.getElementById('col7-electrica');
     const col8Mec = document.getElementById('col8-mecanica');
     const col8Elec = document.getElementById('col8-electrica');
+
+    if(type === 'mecanica') { // guardamos compatibilidad
+    }
 
     if(tipo === 'mecanica') {
       btnMec.className = "px-4 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";

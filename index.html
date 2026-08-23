@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Título estático inicial que será animado por JS -->
-<title> FIME U.N. UAdeC </title>
+<!-- Título animado por JS -->
+<title> FIME U.N. UAdeC - Admisiones </title>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -43,13 +43,14 @@
   }
 </style>
 
-<!-- Script para la animación del título de la pestaña -->
+<!-- Script CORREGIDO para la animación del título de la pestaña -->
 <script>
-  let docTitle = document.title;
+  // Añadimos un separador visible (espacios y viñetas) al final del título original
+  let docTitle = document.title + " *** "; 
   setInterval(function () {
     docTitle = docTitle.substring(1) + docTitle.charAt(0);
     document.title = docTitle;
-  }, 300); // Velocidad: 300ms. Si quieres que vaya más rápido, bájalo a 200.
+  }, 300); // Velocidad: 300ms.
 </script>
 
 </head>
@@ -58,7 +59,7 @@
 <!-- NAVBAR -->
 <header class="fixed top-0 left-0 w-full z-50 bg-[var(--blue-deep)]/95 backdrop-blur-sm border-b border-white/10">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
-    <!-- Reemplazo del texto por el logo -->
+    <!-- Logo FIME -->
     <a href="#inicio" class="flex items-center">
       <img src="https://i.postimg.cc/T3FkpBWk/logo-fime.png" alt="Logo FIME" class="h-12 w-auto object-contain">
     </a>
@@ -121,24 +122,24 @@
   </div>
 </section>
 
-<!-- STATS STRIP -->
+<!-- STATS STRIP FIME -->
 <section class="bg-white border-b border-black/5">
   <div class="max-w-7xl mx-auto px-5 md:px-8 py-10 grid grid-cols-2 md:grid-cols-4 gap-8 text-center md:text-left">
     <div class="fade-up">
-      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">68</p>
-      <p class="text-sm text-[var(--slate)] mt-1">Programas de licenciatura</p>
+      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">4</p>
+      <p class="text-sm text-[var(--slate)] mt-1">Ingenierías Especializadas</p>
     </div>
     <div class="fade-up">
-      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">94%</p>
-      <p class="text-sm text-[var(--slate)] mt-1">Empleabilidad al egresar</p>
+      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">69</p>
+      <p class="text-sm text-[var(--slate)] mt-1">Años de Excelencia</p>
     </div>
     <div class="fade-up">
-      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">12</p>
-      <p class="text-sm text-[var(--slate)] mt-1">Campus en el país</p>
+      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">+5k</p>
+      <p class="text-sm text-[var(--slate)] mt-1">Egresados Titulados</p>
     </div>
     <div class="fade-up">
-      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">+40k</p>
-      <p class="text-sm text-[var(--slate)] mt-1">Estudiantes activos</p>
+      <p class="font-display text-3xl md:text-4xl font-semibold text-[var(--blue)]">100%</p>
+      <p class="text-sm text-[var(--slate)] mt-1">Enfoque Práctico</p>
     </div>
   </div>
 </section>
@@ -218,25 +219,31 @@
     <div class="mb-14 fade-up">
       <p class="text-[var(--yellow)] font-semibold tracking-[0.18em] text-xs mb-3">VIDA ESTUDIANTIL</p>
       <h2 class="font-display font-semibold text-3xl md:text-5xl text-white max-w-xl">
-        Más allá del salón de clases
+        Liderazgo e Innovación Constante
       </h2>
     </div>
 
     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-      <div class="gallery-item relative rounded-xl overflow-hidden h-64 md:h-80 col-span-2 row-span-2 fade-up">
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes conversando en un jardín del campus" class="w-full h-full object-cover">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-64 md:h-80 col-span-2 row-span-2 fade-up group">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes conversando en el campus" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span class="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Capítulo Estudiantil IEEE</span>
       </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up">
-        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1974&auto=format&fit=crop" alt="Equipo deportivo universitario celebrando" class="w-full h-full object-cover">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up group">
+        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1974&auto=format&fit=crop" alt="Equipo universitario" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span class="absolute bottom-3 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">Comunidad CURI</span>
       </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up">
-        <img src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes participando en un club de debate" class="w-full h-full object-cover">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up group">
+        <img src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes participando en debate" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <span class="absolute bottom-3 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">Comunidad Quantum</span>
       </div>
       <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-40 fade-up">
-        <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=1974&auto=format&fit=crop" alt="Concierto estudiantil al aire libre" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=1974&auto=format&fit=crop" alt="Evento estudiantil" class="w-full h-full object-cover">
       </div>
       <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-40 fade-up">
-        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1974&auto=format&fit=crop" alt="Biblioteca universitaria llena de estudiantes" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1974&auto=format&fit=crop" alt="Biblioteca y espacios" class="w-full h-full object-cover">
       </div>
     </div>
   </div>
@@ -251,20 +258,20 @@
       El siguiente paso empieza contigo.
     </h2>
     <p class="text-white/80 max-w-xl mx-auto mb-9">
-      Nuestro equipo de admisiones te acompaña desde la solicitud hasta el primer día de clases.
+      Nuestro equipo te acompaña en cada paso para asegurar tu lugar en la nueva generación de ingenieros.
     </p>
     <a href="#footer" class="inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-9 py-4 rounded-full hover:brightness-105 active:scale-95 transition">
-      Comenzar mi solicitud
+      Proceso de Admisión
     </a>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER INSTITUCIONAL FIME -->
 <footer id="footer" class="bg-[var(--ink)] text-white/70 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
     <div class="col-span-2 md:col-span-1">
-      <p class="font-display font-semibold text-white text-xl mb-3">Universidad Horizonte</p>
-      <p class="text-sm leading-relaxed max-w-[26ch]">Formando profesionales con visión desde 1978.</p>
+      <p class="font-display font-semibold text-white text-xl mb-3">FIME Unidad Norte</p>
+      <p class="text-sm leading-relaxed max-w-[26ch]">69 Aniversario (1957–2026). Formando ingenieros con excelencia y visión global.</p>
       <div class="flex gap-3 mt-5">
         <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
           <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
@@ -278,38 +285,37 @@
       </div>
     </div>
     <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Mapa del sitio</p>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Admisiones</p>
       <ul class="space-y-2.5 text-sm">
         <li><a href="#oferta" class="hover:text-white transition">Oferta educativa</a></li>
-        <li><a href="#vida" class="hover:text-white transition">Vida estudiantil</a></li>
-        <li><a href="#admisiones" class="hover:text-white transition">Admisiones</a></li>
-        <li><a href="#" class="hover:text-white transition">Investigación</a></li>
-        <li><a href="#" class="hover:text-white transition">Bolsa de trabajo</a></li>
+        <li><a href="#admisiones" class="hover:text-white transition">Proceso de Ingreso</a></li>
+        <li><a href="#admisiones" class="hover:text-white transition">Cuota interna e inscripción</a></li>
+        <li><a href="#" class="hover:text-white transition">Becas y Apoyos</a></li>
       </ul>
     </div>
     <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad</p>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad UAdeC</p>
       <ul class="space-y-2.5 text-sm">
+        <li><a href="#vida" class="hover:text-white transition">Grupos Estudiantiles</a></li>
         <li><a href="#" class="hover:text-white transition">Egresados</a></li>
-        <li><a href="#" class="hover:text-white transition">Profesores</a></li>
-        <li><a href="#" class="hover:text-white transition">Becas</a></li>
-        <li><a href="#" class="hover:text-white transition">Intercambios</a></li>
+        <li><a href="#" class="hover:text-white transition">CIDEI 2026</a></li>
+        <li><a href="#" class="hover:text-white transition">SISA</a></li>
       </ul>
     </div>
     <div>
       <p class="text-white font-semibold text-sm mb-4 tracking-wide">Contacto</p>
       <ul class="space-y-2.5 text-sm">
-        <li>Av. del Conocimiento 450, Ciudad de México</li>
-        <li>admisiones@horizonte.edu.mx</li>
-        <li>+52 55 1234 5678</li>
+        <li>Campus Monclova, Coahuila</li>
+        <li>admisiones@fime.uadec.mx</li>
+        <li>+52 866 123 4567</li>
       </ul>
     </div>
   </div>
   <div class="max-w-7xl mx-auto px-5 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
-    <p>© 2026 Universidad Horizonte. Todos los derechos reservados.</p>
+    <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
     <div class="flex gap-5">
       <a href="#" class="hover:text-white/70 transition">Aviso de privacidad</a>
-      <a href="#" class="hover:text-white/70 transition">Términos de uso</a>
+      <a href="#" class="hover:text-white/70 transition">Directorio</a>
     </div>
   </div>
 </footer>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingeniería en Sistemas Computacionales - FIME U.N.</title>
+<link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#102A54;
+    --blue:#1E4CA8;
+    --blue-bright:#3B6FE0;
+    --yellow:#F4B400;
+    --paper:#FBFBF9;
+    --ink:#0E1B33;
+    --slate:#5C6B84;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Space Grotesk',sans-serif; background:var(--paper); color:var(--ink);}
+  .font-display{font-family:'Fraunces',serif;}
+  .nav-link{position:relative;}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--yellow);transition:width .3s ease;}
+  .nav-link:hover::after{width:100%;}
+  .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);}
+  @media (min-width:768px){ .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);} }
+  .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+  ::selection{background:var(--yellow); color:var(--blue-deep);}
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.5);">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
+    <a href="index.html" class="flex items-center">
+      <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-12 w-auto object-contain">
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/90 font-medium">
+      <a href="index.html#oferta" class="nav-link">Oferta educativa</a>
+      <a href="index.html#vida" class="nav-link">Vida estudiantil</a>
+      <a href="index.html#admisiones" class="nav-link">Admisiones</a>
+      <a href="#footer" class="nav-link">Contacto</a>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="index.html#admisiones" class="hidden md:inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold text-sm px-5 py-2.5 rounded-full hover:brightness-105 active:scale-95 transition">
+        Contáctanos
+      </a>
+      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white p-2">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0" style="background-color: rgba(16, 42, 84, 0.95);">
+    <div class="flex flex-col gap-1 px-5 pb-5 text-white/90 font-medium">
+      <a href="index.html#oferta" class="py-3 border-b border-white/10">Oferta educativa</a>
+      <a href="index.html#vida" class="py-3 border-b border-white/10">Vida estudiantil</a>
+      <a href="index.html#admisiones" class="py-3 border-b border-white/10">Admisiones</a>
+      <a href="#footer" class="py-3 border-b border-white/10">Contacto</a>
+      <a href="index.html#admisiones" class="mt-4 mb-2 text-center bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-5 py-3 rounded-full">Contáctanos</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO CON IMAGEN ESTÁTICA Y OPACIDAD (NUEVA IMAGEN SISTEMAS) -->
+<section class="relative min-h-[70vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
+  <!-- Fotografía representativa: Código / Desarrollo de Software -->
+  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070&auto=format&fit=crop" alt="Desarrollo de software y código" class="absolute inset-0 w-full h-full object-cover">
+  
+  <!-- Doble capa de opacidad para garantizar lectura -->
+  <div class="absolute inset-0 bg-[#102A54] opacity-75"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-20 w-full fade-up">
+    <p class="text-[var(--yellow)] font-semibold tracking-[0.2em] text-xs md:text-sm mb-4">LICENCIATURA</p>
+    <h1 class="font-display font-semibold text-white text-4xl sm:text-6xl md:text-7xl leading-[1.05] max-w-4xl mb-6">
+      Ingeniería en Sistemas Computacionales
+    </h1>
+    <p class="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">
+      Diseña, desarrolla y gestiona soluciones de software escalables. Lidera la transformación digital dominando el código, las bases de datos y la arquitectura tecnológica.
+    </p>
+  </div>
+</section>
+
+<!-- CONTENIDO DE LA CARRERA -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
+  
+  <div class="grid md:grid-cols-12 gap-12 lg:gap-20">
+    <!-- Columna Izquierda: Descripción -->
+    <div class="md:col-span-7 fade-up">
+      <h2 class="font-display text-3xl md:text-4xl text-[var(--blue-deep)] font-semibold mb-6">Arquitectos de la Transformación Digital</h2>
+      <p class="text-[var(--slate)] leading-relaxed mb-6">
+        La Ingeniería en Sistemas Computacionales en FIME Unidad Norte forma expertos capaces de analizar, diseñar e implementar sistemas de información y arquitecturas de software que optimizan las operaciones de cualquier organización.
+      </p>
+      <p class="text-[var(--slate)] leading-relaxed mb-8">
+        Nuestros estudiantes pasan de la lógica de programación básica a dominar el desarrollo full-stack, automatización de bases de datos y creación de interfaces de escritorio y web, adquiriendo las bases para crear desde herramientas de gestión local hasta plataformas robustas.
+      </p>
+
+      <!-- Imagen Intermedia de Laboratorio/Prácticas (Programación/Servidores) -->
+      <div class="my-10 rounded-2xl overflow-hidden shadow-lg h-64 md:h-80 relative fade-up">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2070&auto=format&fit=crop" alt="Prácticas de programación y desarrollo web" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+      </div>
+
+      <h3 class="font-display text-2xl text-[var(--blue)] font-semibold mb-4">Áreas de Especialización</h3>
+      <ul class="space-y-4 mb-8">
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span class="text-[var(--ink)]"><strong>Desarrollo de Software y Full-Stack:</strong> Creación de aplicaciones web y de escritorio utilizando lenguajes modernos (Python, C++), frameworks de vanguardia (Next.js, FastAPI) y diseño de interfaces gráficas.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span class="text-[var(--ink)]"><strong>Gestión de Bases de Datos:</strong> Estructuración, administración y optimización de bases de datos relacionales (como PostgreSQL) para el manejo seguro y escalable de información institucional.</span>
+        </li>
+        <li class="flex items-start">
+          <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span class="text-[var(--ink)]"><strong>Redes y Arquitectura de TI:</strong> Configuración de infraestructuras de red, administración de servidores y despliegue de soluciones tecnológicas mediante contenedores (Docker) y repositorios colaborativos.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Columna Derecha: Tarjeta de Info Rápida y Malla Curricular -->
+    <div class="md:col-span-5 fade-up">
+      <div class="bg-white rounded-2xl shadow-xl border border-black/5 p-8 sticky top-32">
+        <h3 class="font-display text-xl text-[var(--blue-deep)] font-semibold mb-6 border-b pb-4">Detalles del Programa</h3>
+        
+        <div class="space-y-5">
+          <div>
+            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Duración</p>
+            <p class="text-[var(--ink)] font-medium">9 Semestres</p>
+          </div>
+          <div>
+            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Modalidad</p>
+            <p class="text-[var(--ink)] font-medium">Presencial / Tiempo Completo</p>
+          </div>
+          <div>
+            <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Campo Laboral</p>
+            <p class="text-[var(--ink)] font-medium">Empresas de desarrollo de software, departamentos de TI, consultoría tecnológica, administración de bases de datos y creación de plataformas digitales.</p>
+          </div>
+        </div>
+
+        <!-- Botón para Malla Curricular -->
+        <a href="#" target="_blank" rel="noopener noreferrer" class="mt-8 w-full flex items-center justify-center gap-3 bg-[var(--blue-deep)] text-white font-semibold py-4 px-6 rounded-full hover:bg-[var(--blue)] active:scale-95 transition-all shadow-md group">
+          <svg class="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Ver Malla Curricular
+        </a>
+        
+        <div class="mt-4 text-center">
+          <a href="index.html#admisiones" class="text-sm text-[var(--blue)] font-medium hover:underline">Ir a proceso de admisión &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer" class="bg-[var(--ink)] text-white/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+    <div class="col-span-2 md:col-span-1">
+      <p class="font-display font-semibold text-white text-xl mb-3">FIME Unidad Norte</p>
+      <p class="text-sm leading-relaxed max-w-[26ch]">69 Aniversario (1957–2026). Formando ingenieros con excelencia y visión global.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.7.8 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.8.7-1.5 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.7-.8-1-1.5-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.8-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1 0-1.6.2-2 .4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2C2.8 9.5 2.8 9.9 2.8 13s0 3.5.1 4.7c0 1 .2 1.6.4 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.6-.2 2-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.6-.4-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.8a3.6 3.6 0 1 0 0 7.3 3.6 3.6 0 0 0 0-7.3Zm5.7-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.9 8.4H3.3V20h3.6V8.4ZM5.1 3.1a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM20.7 20h-3.6v-6.3c0-1.5-.5-2.5-1.8-2.5-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20H9.7s.1-10.6 0-11.6h3.6v1.6c.5-.7 1.3-1.8 3.2-1.8 2.3 0 4.1 1.5 4.1 4.8V20Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Admisiones</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="index.html#oferta" class="hover:text-white transition">Oferta educativa</a></li>
+        <li><a href="index.html#admisiones" class="hover:text-white transition">Proceso de Ingreso</a></li>
+        <li><a href="index.html#admisiones" class="hover:text-white transition">Cuota interna e inscripción</a></li>
+        <li><a href="#" class="hover:text-white transition">Becas y Apoyos</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad UAdeC</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="index.html#vida" class="hover:text-white transition">Grupos Estudiantiles</a></li>
+        <li><a href="#" class="hover:text-white transition">Egresados</a></li>
+        <li><a href="#" class="hover:text-white transition">CIDEI 2026</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Contacto</p>
+      <ul class="space-y-2.5 text-sm">
+        <li>Campus Monclova, Coahuila</li>
+        <li>admisiones@fime.uadec.mx</li>
+        <li>+52 866 123 4567</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
+    <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
+    <div class="flex gap-5">
+      <a href="#" class="hover:text-white/70 transition">Aviso de privacidad</a>
+      <a href="#" class="hover:text-white/70 transition">Directorio</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  let menuOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.opacity = '1';
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+  });
+
+  // Close mobile menu after clicking a link
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

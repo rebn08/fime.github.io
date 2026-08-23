@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malla Curricular - Ingeniería en Sistemas Computacionales (Plan A14)</title>
+<link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .font-display { font-family: 'Fraunces', serif; }
+  
+  /* Clases de colores para las materias (Colores Pastel Armoniosos según FIME) */
+  .cb { background-color: #fed7aa; border-color: #fdba74; } /* Naranja - Ciencias Básicas */
+  .ci { background-color: #bae6fd; border-color: #7dd3fc; } /* Azul Claro - Ciencias de la Ing */
+  .ia { background-color: #e9d5ff; border-color: #d8b4fe; } /* Morado - Ing Aplicada */
+  .di { background-color: #c7d2fe; border-color: #a5b4fc; } /* Índigo Pastel - Diseño de Ing */
+  .csh { background-color: #fecdd3; border-color: #fda4af; } /* Rosa - Cien Soc y Hum */
+  .ea { background-color: #d9f99d; border-color: #bef264; } /* Verde Claro - Econ Admin */
+  .cc { background-color: #e5e5e4; border-color: #a8a29e; } /* Beige - Cursos Comp */
+  .ic { background-color: #fef08a; border-color: #fde047; } /* Amarillo Pastel - Inglés */
+  .oc { background-color: #bbf7d0; border-color: #86efac; } /* Verde - Extra curriculares */
+  
+  .materia-card {
+    border-width: 1px;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6.5rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    page-break-inside: avoid;
+    position: relative;
+  }
+  .materia-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #475569;
+  }
+  .materia-title {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    flex-direction: column;
+  }
+  .materia-footer {
+    text-align: right;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  @media print {
+    body { background-color: white; padding: 0; margin: 0; }
+    .print-wrapper { padding: 10mm; zoom: 0.85; }
+    .hide-on-print { display: none !important; }
+  }
+</style>
+</head>
+<body class="antialiased min-h-screen">
+
+<!-- HEADER PARA PÁGINA WEB (Se oculta al imprimir) -->
+<header class="bg-[#102A54] text-white py-4 px-6 shadow-md hide-on-print flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-10">
+    <h1 class="font-display font-semibold text-xl">Malla Curricular</h1>
+  </div>
+  <div class="flex items-center gap-4">
+    <!-- SELECTOR DE ACENTUACIÓN / ESPECIALIDAD -->
+    <div class="bg-white/10 p-1 rounded-lg flex gap-1">
+      <button onclick="cambiarEspecialidad('bigdata')" id="btn-bigdata" class="px-3 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]">Big Data Science</button>
+      <button onclick="cambiarEspecialidad('ciber')" id="btn-ciber" class="px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20">Ciberseguridad</button>
+      <button onclick="cambiarEspecialidad('software')" id="btn-software" class="px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20">Desarrollo de Software</button>
+    </div>
+    <button onclick="window.print()" class="bg-[#F4B400] text-[#102A54] px-4 py-2 rounded-full font-bold text-sm hover:brightness-105 transition flex items-center gap-2">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+      Imprimir a PDF
+    </button>
+  </div>
+</header>
+
+<div class="print-wrapper max-w-full overflow-x-auto p-6 md:p-10">
+  
+  <!-- ENCABEZADO INSTITUCIONAL -->
+  <div class="flex items-center justify-between mb-8 min-w-[1200px]">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo UAdeC FIME" class="h-20" style="filter: invert(1) brightness(0.2);">
+    <div class="text-center flex-grow">
+      <h2 class="font-display text-2xl font-bold text-gray-800">Universidad Autónoma de Coahuila</h2>
+      <h3 class="text-lg font-semibold text-gray-600 mt-1">Facultad de Ingeniería Mecánica y Eléctrica - Unidad Norte</h3>
+    </div>
+    <div class="text-right border-l-4 border-gray-800 pl-6 py-2">
+      <h1 class="font-display text-xl font-bold text-[#102A54]">Ingeniero en Sistemas Computacionales</h1>
+      <p class="text-xs text-gray-500">Plan A14[cite: 1]</p>
+      <p id="titulo-especialidad" class="text-sm font-semibold text-gray-600 mt-0.5">Especialidad: Big Data Science</p>
+    </div>
+  </div>
+
+  <!-- MALLA CURRICULAR GRID (9 SEMESTRES) -->
+  <div class="grid grid-cols-9 gap-3 min-w-[1300px]">
+    
+    <!-- SEMESTRE 1 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">I</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Álgebra</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Física I</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Matemáticas Discretas</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Fundamentos de Programación</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Comunicación Efectiva</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Introducción a las Ciencias Computacionales</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5-2-7</span></div><div class="materia-title">Inglés Pre-Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 2 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">II</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Cálculo Diferencial</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Física II</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Administración para Ingenieros</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Lógica Digital y Organización Computacional</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Paradigmas de Programación I</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Introducción a Redes</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5-2-7</span></div><div class="materia-title">Inglés Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 3 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">III</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Cálculo Integral</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Electricidad y Magnetismo</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Probabilidad</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Desarrollo Sustentable</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Paradigmas de Programación II</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Routing, Switching and Wireless</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5-2-7</span></div><div class="materia-title">Inglés Elemental</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 4 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">IV</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Cálculo Multivariable</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Contabilidad Financiera</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Estadística</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Sistemas Operativos</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Estructura de Datos</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Security and Automation</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5-2-7</span></div><div class="materia-title">Inglés Pre-Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 5 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">V</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Ecuaciones Diferenciales</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Álgebra Lineal</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Fundamentos de Base de Datos</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Sistemas Operativos II</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Algoritmos de Ordenamiento y Búsqueda</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Bridge and Aspectos Básicos de Ciberseguridad</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5-2-7</span></div><div class="materia-title">Inglés Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 6 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">VI</div>
+      <div class="materia-card cb"><div class="materia-header"><span>2-1-3</span></div><div class="materia-title">Métodos Numéricos</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Diseño de Interfaces</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Administración de Base de Datos</div><div class="materia-footer">DI</div></div>
+      
+      <!-- OPTATIVA PROFESIONAL I (CAMBIANTE) -->
+      <div id="opt1-bigdata" class="materia-card ia border-dashed border-2"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa I<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Business Intelligence</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt1-ciber" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa I<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">IoT</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt1-software" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa I<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Diseño y Construcción</span></div><div class="materia-footer">IA</div></div>
+
+      <div class="materia-card ia"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Ingeniería de Software</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Seminario de Investigación</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Inglés Técnico</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0-0-2</span></div><div class="materia-title">Actividades de Formación Integral</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 7 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">VII</div>
+      <div class="materia-card di"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Modelos Computacionales</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Desarrollo de Aplicaciones Web</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Investigación de Operaciones</div><div class="materia-footer">EA</div></div>
+      
+      <!-- OPTATIVA PROFESIONAL II (CAMBIANTE) -->
+      <div id="opt2-bigdata" class="materia-card ia border-dashed border-2"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa II<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Inteligencia Artificial</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt2-ciber" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa II<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Sistemas de Control y Automatización Industrial</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt2-software" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa II<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Explotación y Administración</span></div><div class="materia-footer">IA</div></div>
+
+      <div class="materia-card csh"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Ética Profesional Softskills</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Diseño y Arquitectura de Software</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ic border-2 border-gray-400 h-16"><div class="materia-header"><span>0-0-10</span></div><div class="materia-title">Servicio Social</div></div>
+    </div>
+
+    <!-- SEMESTRE 8 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">VIII</div>
+      
+      <!-- OPTATIVA PROFESIONAL III (CAMBIANTE) -->
+      <div id="opt3-bigdata" class="materia-card ia border-dashed border-2"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa III<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Base de Datos Avanzada</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt3-ciber" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa III<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Análisis Forense</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt3-software" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa III<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Modelado de Datos</span></div><div class="materia-footer">IA</div></div>
+
+      <div class="materia-card ia"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Desarrollo de Aplicaciones de Cómputo Móvil</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Sistemas de Información</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>2-1-3</span></div><div class="materia-title">Calidad y Pruebas de Software</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>2-3-5</span></div><div class="materia-title">Cómputo en la Nube</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Desarrollo de Proyectos de Software</div><div class="materia-footer">IA</div></div>
+    </div>
+
+    <!-- SEMESTRE 9 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">IX</div>
+      <div class="materia-card ic border-2 border-gray-400 h-16"><div class="materia-header"><span>0-0-5</span></div><div class="materia-title">Prácticas Profesionales</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Seguridad Informática</div><div class="materia-footer">CI</div></div>
+      
+      <!-- OPTATIVA PROFESIONAL IV (CAMBIANTE) -->
+      <div id="opt4-bigdata" class="materia-card ia border-dashed border-2"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa IV<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">ERP-CRM</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt4-ciber" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa IV<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Normatividad y Continuidad de Negocio</span></div><div class="materia-footer">IA</div></div>
+      <div id="opt4-software" class="materia-card ia border-dashed border-2" style="display: none;"><div class="materia-header"><span>5-0-5</span></div><div class="materia-title">Optativa IV<span class="text-[0.5rem] text-purple-700 font-semibold mt-1">Gestión de Big Data</span></div><div class="materia-footer">IA</div></div>
+
+      <div class="materia-card csh"><div class="materia-header"><span>2-1-3</span></div><div class="materia-title">Educación para la Ciudadanía y Derechos Humanos</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3-2-5</span></div><div class="materia-title">Administración y Evaluación de Proyectos</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3-0-3</span></div><div class="materia-title">Desarrollo Emprendedor</div><div class="materia-footer">EA</div></div>
+    </div>
+
+  </div> <!-- FIN GRID MALLA -->
+
+  <!-- LEYENDA DE COLORES Y TOTALES -->
+  <div class="mt-12 bg-white p-4 rounded-xl border border-gray-200 shadow-sm max-w-xl">
+    <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Áreas del Conocimiento (Plan A14)</h4>
+    <div class="grid grid-cols-2 gap-y-2 text-xs">
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cb border border-orange-300"></div><span>CB - Ciencias Básicas</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ci border border-sky-300"></div><span>CI - Ciencias de la Ing.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ia border border-purple-300"></div><span>IA - Ing. Aplicada</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded di border border-indigo-300"></div><span>DI - Diseño de Ing.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded csh border border-pink-300"></div><span>CSH - Ciencias Soc y Hum</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ea border border-lime-300"></div><span>EA - Económico Admin.</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cc border border-stone-300"></div><span>CC - Cursos Complementarios</span></div>
+      <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ic border border-yellow-300"></div><span>IC - Inglés Curricular</span></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function cambiarEspecialidad(tipo) {
+    const btnBig = document.getElementById('btn-bigdata');
+    const btnCib = document.getElementById('btn-ciber');
+    const btnSoft = document.getElementById('btn-software');
+    const titulo = document.getElementById('titulo-especialidad');
+
+    // Ocultar/Mostrar Optativa 1
+    document.getElementById('opt1-bigdata').style.display = (tipo === 'bigdata') ? 'flex' : 'none';
+    document.getElementById('opt1-ciber').style.display = (tipo === 'ciber') ? 'flex' : 'none';
+    document.getElementById('opt1-software').style.display = (tipo === 'software') ? 'flex' : 'none';
+
+    // Ocultar/Mostrar Optativa 2
+    document.getElementById('opt2-bigdata').style.display = (tipo === 'bigdata') ? 'flex' : 'none';
+    document.getElementById('opt2-ciber').style.display = (tipo === 'ciber') ? 'flex' : 'none';
+    document.getElementById('opt2-software').style.display = (tipo === 'software') ? 'flex' : 'none';
+
+    // Ocultar/Mostrar Optativa 3
+    document.getElementById('opt3-bigdata').style.display = (tipo === 'bigdata') ? 'flex' : 'none';
+    document.getElementById('opt3-ciber').style.display = (tipo === 'ciber') ? 'flex' : 'none';
+    document.getElementById('opt3-software').style.display = (tipo === 'software') ? 'flex' : 'none';
+
+    // Ocultar/Mostrar Optativa 4
+    document.getElementById('opt4-bigdata').style.display = (tipo === 'bigdata') ? 'flex' : 'none';
+    document.getElementById('opt4-ciber').style.display = (tipo === 'ciber') ? 'flex' : 'none';
+    document.getElementById('opt4-software').style.display = (tipo === 'software') ? 'flex' : 'none';
+
+    // Cambiar estilos de botones y título
+    if(tipo === 'bigdata') {
+      btnBig.className = "px-3 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";
+      btnCib.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      btnSoft.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      titulo.textContent = "Especialidad: Big Data Science";
+    } else if(tipo === 'ciber') {
+      btnCib.className = "px-3 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";
+      btnBig.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      btnSoft.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      titulo.textContent = "Especialidad: Ciberseguridad";
+    } else {
+      btnSoft.className = "px-3 py-1.5 rounded-md font-bold text-xs transition bg-[#F4B400] text-[#102A54]";
+      btnBig.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      btnCib.className = "px-3 py-1.5 rounded-md font-bold text-xs transition text-white hover:bg-white/20";
+      titulo.textContent = "Especialidad: Desarrollo de Software";
+    }
+  }
+</script>
+</body>
+</html>

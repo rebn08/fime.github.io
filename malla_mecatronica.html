@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malla Curricular - Ingeniería Mecatrónica</title>
+<link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .font-display { font-family: 'Fraunces', serif; }
+  
+  /* Clases de colores para las materias (Colores Pastel Armoniosos FIME) */
+  .cb { background-color: #fed7aa; border-color: #fdba74; } /* Naranja - Ciencias Básicas */
+  .ci { background-color: #bae6fd; border-color: #7dd3fc; } /* Azul Claro - Ciencias de la Ing */
+  .ia { background-color: #e9d5ff; border-color: #d8b4fe; } /* Morado - Ing Aplicada */
+  .di { background-color: #c7d2fe; border-color: #a5b4fc; } /* Índigo Pastel - Diseño de Ing */
+  .csh { background-color: #fecdd3; border-color: #fda4af; } /* Rosa - Cien Soc y Hum */
+  .ea { background-color: #d9f99d; border-color: #bef264; } /* Verde Claro - Econ Admin */
+  .cc { background-color: #e5e5e4; border-color: #a8a29e; } /* Beige - Cursos Comp */
+  .ic { background-color: #fef08a; border-color: #fde047; } /* Amarillo Pastel - Inglés */
+  .oc { background-color: #bbf7d0; border-color: #86efac; } /* Verde - Extra curriculares */
+  
+  .materia-card {
+    border-width: 1px;
+    border-radius: 0.5rem;
+    padding: 0.35rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 6rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    page-break-inside: avoid;
+  }
+  .materia-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #475569;
+  }
+  .materia-title {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  .materia-footer {
+    text-align: right;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: #64748b;
+  }
+
+  @media print {
+    body { background-color: white; padding: 0; margin: 0; }
+    .print-wrapper { padding: 10mm; zoom: 0.85; }
+    .hide-on-print { display: none !important; }
+  }
+</style>
+</head>
+<body class="antialiased min-h-screen">
+
+<!-- HEADER PARA PÁGINA WEB (Se oculta al imprimir) -->
+<header class="bg-[#102A54] text-white py-4 px-6 shadow-md hide-on-print flex justify-between items-center">
+  <div class="flex items-center gap-3">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-10">
+    <h1 class="font-display font-semibold text-xl">Malla Curricular</h1>
+  </div>
+  <button onclick="window.print()" class="bg-[#F4B400] text-[#102A54] px-5 py-2 rounded-full font-bold text-sm hover:brightness-105 transition flex items-center gap-2">
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+    Imprimir a PDF
+  </button>
+</header>
+
+<div class="print-wrapper max-w-full overflow-x-auto p-6 md:p-10">
+  
+  <!-- ENCABEZADO INSTITUCIONAL -->
+  <div class="flex items-center justify-between mb-8 min-w-[1200px]">
+    <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo UAdeC FIME" class="h-20" style="filter: invert(1) brightness(0.2);">
+    <div class="text-center flex-grow">
+      <h2 class="font-display text-2xl font-bold text-gray-800">Universidad Autónoma de Coahuila</h2>
+      <h3 class="text-lg font-semibold text-gray-600 mt-1">Facultad de Ingeniería Mecánica y Eléctrica - Unidad Norte</h3>
+    </div>
+    <div class="text-right border-l-4 border-gray-800 pl-6 py-2">
+      <h1 class="font-display text-3xl font-bold text-[#102A54]">Ingeniero en Mecatrónica</h1>
+    </div>
+  </div>
+
+  <!-- MALLA CURRICULAR GRID -->
+  <div class="grid grid-cols-9 gap-3 min-w-[1300px]">
+    
+    <!-- SEMESTRE 1 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">1</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Fundamentos de Matemáticas</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Química</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Física</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Circuitos Lógicos y Secuenciales</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Fundamentos de Programación</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Comunicación Oral y Escrita</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Pre-Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 1</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 2 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">2</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Diferencial</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Álgebra Lineal</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Circuitos Eléctricos</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Lenguaje de Descripción de Hardware</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Programación Orientada a Objetos</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Administración para Ingeniería</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Inicial</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 2</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 3 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">3</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Cálculo Integral</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Probabilidad y Estadística</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electrónica Analógica</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Microcontroladores</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Sustentabilidad y Medio Ambiente</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica Vectorial</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Elemental</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 3</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 4 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">4</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Ecuaciones Diferenciales y Aplicaciones</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electricidad y Magnetismo</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Amplificadores Operacionales</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Sistemas Embebidos</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Contabilidad y Finanzas para Ingenieros</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica de Materiales</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Pre-Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 4</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 5 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">5</div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Teoría de Fourier</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Máquinas Eléctricas</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Electrónica de Potencia</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño de Interfaces Mecatrónicas</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Métodos Numéricos</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño de Elementos de Máquinas</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ic"><div class="materia-header"><span>5+2</span><span>7</span></div><div class="materia-title">Inglés Intermedio</div><div class="materia-footer">IC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 5</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 6 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">6</div>
+      <div class="materia-card ci"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Teoría de Control</div><div class="materia-footer">CI</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 1</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card cb"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mecánica Clásica</div><div class="materia-footer">CB</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Procesos de Manufactura</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Emprendedores</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Análisis y Diseño de Mecanismos</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title">Educación para la Ciudadanía y DD HH</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>2+2</span><span>4</span></div><div class="materia-title">Inglés Técnico IMEC</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card oc"><div class="materia-header"><span>0+0</span><span>2</span></div><div class="materia-title">Actividades Extracurriculares 6</div><div class="materia-footer">OC</div></div>
+    </div>
+
+    <!-- SEMESTRE 7 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">7</div>
+      <div class="materia-card di"><div class="materia-header"><span>3+1</span><span>4</span></div><div class="materia-title">Teoría de Control Discreto</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 2</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Fundamentos de Robótica</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Sensores y Actuadores</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Artificial Intelligence</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Diseño y Manufactura Aditiva</div><div class="materia-footer">DI</div></div>
+      <div class="materia-card cc"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Seminario de Investigación</div><div class="materia-footer">CC</div></div>
+      <div class="materia-card ic border-2 border-gray-400 h-16"><div class="materia-header"><span>0+0</span><span>10</span></div><div class="materia-title">Servicio Social</div></div>
+    </div>
+
+    <!-- SEMESTRE 8 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">8</div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Control de Sistemas Mecatrónicos</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia border-dashed border-2"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Optativa 3</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Robótica y Automatización Industrial</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Hidráulica y Neumática</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Visión por Computadora</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ia"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Sistemas Ciber-Físicos</div><div class="materia-footer">IA</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Gestión de Proyectos</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card di"><div class="materia-header"><span>3+2</span><span>5</span></div><div class="materia-title">Mechatronics R&D</div><div class="materia-footer">DI</div></div>
+    </div>
+
+    <!-- SEMESTRE 9 -->
+    <div class="flex flex-col gap-2">
+      <div class="border border-gray-800 rounded-lg text-center py-2 font-bold text-gray-800 bg-white mb-2">9</div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Leadership</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card csh"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Ética Profesional</div><div class="materia-footer">CSH</div></div>
+      <div class="materia-card ea"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title">Seguridad e Higiene</div><div class="materia-footer">EA</div></div>
+      <div class="materia-card ic border-2 border-gray-400 h-24 mt-2">
+        <div class="materia-header"><span>0+0</span><span>10</span></div>
+        <div class="materia-title">Prácticas Profesionales<br><span class="text-xs font-normal mt-1">480 HRS</span></div>
+      </div>
+    </div>
+
+  </div> <!-- FIN GRID MALLA -->
+
+  <!-- LEYENDA DE COLORES Y CATÁLOGO DE OPTATIVAS -->
+  <div class="mt-12 grid grid-cols-3 gap-8 min-w-[1200px]">
+    
+    <!-- LEYENDA -->
+    <div class="col-span-1 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+      <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Áreas del Conocimiento</h4>
+      <div class="grid grid-cols-2 gap-y-2 text-xs">
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cb border border-orange-300"></div><span>CB - Ciencias Básicas</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ci border border-sky-300"></div><span>CI - Ciencias de la Ing.</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ia border border-purple-300"></div><span>IA - Ing. Aplicada</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded di border border-indigo-300"></div><span>DI - Diseño de Ing.</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded csh border border-pink-300"></div><span>CSH - Ciencias Soc y Hum</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ea border border-lime-300"></div><span>EA - Económico Admin.</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded cc border border-stone-300"></div><span>CC - Cursos Complementarios</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 rounded ic border border-yellow-300"></div><span>IC - Inglés Curricular</span></div>
+      </div>
+      <div class="mt-4 pt-3 border-t text-sm font-bold flex justify-between px-2">
+        <span>Total de Asignaturas: <span class="text-[#102A54]">69</span></span>
+        <span>Total de Créditos: <span class="text-[#102A54]">319</span></span>
+      </div>
+    </div>
+
+    <!-- CATÁLOGO DE OPTATIVAS (Basado en la imagen de referencia) -->
+    <div class="col-span-2 bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+      <h4 class="font-bold text-gray-800 mb-3 text-sm border-b pb-2">Catálogo de Optativas (IA)</h4>
+      <div class="grid grid-cols-3 gap-6">
+        
+        <!-- OPTATIVA 6 -->
+        <div>
+          <p class="text-xs font-bold text-center text-gray-500 mb-2">Semestre 6 (Optativa 1)</p>
+          <div class="flex flex-col gap-2">
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Biomateriales</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Dispositivos Médicos Implantables</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Bases de Datos</div></div>
+          </div>
+        </div>
+        
+        <!-- OPTATIVA 7 -->
+        <div>
+          <p class="text-xs font-bold text-center text-gray-500 mb-2">Semestre 7 (Optativa 2)</p>
+          <div class="flex flex-col gap-2">
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Resistencia de Materiales</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Metrología Biomédica</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Aprendizaje Automático</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Ayudas Técnicas</div></div>
+          </div>
+        </div>
+
+        <!-- OPTATIVA 8 -->
+        <div>
+          <p class="text-xs font-bold text-center text-gray-500 mb-2">Semestre 8 (Optativa 3)</p>
+          <div class="flex flex-col gap-2">
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Fundamentos de Robótica</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>1+2</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Instrumentación Virtual</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>3+0</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Bioestadística</div></div>
+            <div class="materia-card ia !h-16"><div class="materia-header"><span>2+1</span><span>3</span></div><div class="materia-title !text-[0.55rem]">Diseño de Prótesis</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

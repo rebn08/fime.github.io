@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ingeniería Mecánico Electricista - FIME U.N.</title>
+<title>Ingeniería Biomédica - FIME U.N.</title>
 <link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,20 +70,22 @@
   </div>
 </header>
 
-<!-- HERO MECÁNICO ELECTRICISTA -->
-<section class="relative min-h-[70vh] flex items-center hero-clip overflow-hidden bg-[var(--blue-deep)]">
-  <!-- LA CORRECCIÓN: Agregué opacity-30 y mix-blend-overlay para que se fusione igual que en Biomédica -->
-  <img src="https://images.unsplash.com/photo-1537281227546-bf599e0df39a?q=80&w=2070&auto=format&fit=crop" alt="Industria y manufactura avanzada" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay">
+<!-- HERO BIOMÉDICA CON IMAGEN ESTÁTICA Y OPACIDAD -->
+<section class="relative min-h-[70vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
+  <!-- Fotografía representativa (Tecnología Médica / Imagenología) -->
+  <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" alt="Equipamiento de alta especialidad" class="absolute inset-0 w-full h-full object-cover">
   
-  <div class="absolute inset-0 bg-gradient-to-t from-[#102A54] to-transparent opacity-90"></div>
+  <!-- Doble capa de opacidad para garantizar lectura: un tono azul uniforme y un gradiente inferior -->
+  <div class="absolute inset-0 bg-[#102A54] opacity-75"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
 
   <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-20 w-full fade-up">
     <p class="text-[var(--yellow)] font-semibold tracking-[0.2em] text-xs md:text-sm mb-4">LICENCIATURA</p>
     <h1 class="font-display font-semibold text-white text-4xl sm:text-6xl md:text-7xl leading-[1.05] max-w-4xl mb-6">
-      Ingeniería Mecánico Electricista
+      Ingeniería Biomédica
     </h1>
-    <p class="text-white/80 text-lg md:text-xl max-w-2xl leading-relaxed">
-      Integra el diseño mecánico avanzado con sistemas de potencia y control eléctrico. Transforma la industria a través de la automatización y el diseño estructural eficiente.
+    <p class="text-white/90 text-lg md:text-xl max-w-2xl leading-relaxed">
+      Diseña, desarrolla y gestiona tecnología médica de vanguardia para mejorar la calidad de vida. Sé el puente entre la ingeniería aplicada y las ciencias de la salud.
     </p>
   </div>
 </section>
@@ -94,32 +96,32 @@
   <div class="grid md:grid-cols-12 gap-12 lg:gap-20">
     <!-- Columna Izquierda: Descripción -->
     <div class="md:col-span-7 fade-up">
-      <h2 class="font-display text-3xl md:text-4xl text-[var(--blue-deep)] font-semibold mb-6">El Motor de la Industria Moderna</h2>
+      <h2 class="font-display text-3xl md:text-4xl text-[var(--blue-deep)] font-semibold mb-6">El Futuro de la Tecnología en la Salud</h2>
       <p class="text-[var(--slate)] leading-relaxed mb-6">
-        La Ingeniería Mecánico Electricista en FIME Unidad Norte forma profesionales integrales, capaces de proyectar, construir y mantener los sistemas electromecánicos que mueven a la industria contemporánea.
+        La Ingeniería Biomédica en FIME Unidad Norte prepara profesionales capaces de integrar conocimientos de electrónica, mecánica, programación y sistemas embebidos aplicados al entorno médico y clínico.
       </p>
       <p class="text-[var(--slate)] leading-relaxed mb-8">
-        Nuestros estudiantes dominan herramientas tecnológicas de vanguardia. Desde el modelado 3D y simulaciones de esfuerzos mecánicos, hasta el diseño y análisis de circuitos de electrónica analógica y de potencia, preparándolos para resolver problemas reales en piso de producción.
+        Nuestros estudiantes desarrollan soluciones integrales que van desde la adquisición y procesamiento de biopotenciales, hasta la gestión y mantenimiento de equipo de soporte vital e imagenología en hospitales de tercer nivel.
       </p>
 
-      <!-- Imagen Intermedia -->
+      <!-- Imagen Intermedia de Laboratorio/Prácticas -->
       <div class="my-10 rounded-2xl overflow-hidden shadow-lg h-64 md:h-80 relative fade-up">
-        <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=2070&auto=format&fit=crop" alt="Prácticas de diseño industrial e instrumentación" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="Prácticas de diseño de prótesis y sensores biomédicos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
       </div>
 
       <h3 class="font-display text-2xl text-[var(--blue)] font-semibold mb-4">Áreas de Especialización</h3>
       <ul class="space-y-4 mb-8">
         <li class="flex items-start">
           <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Diseño Mecánico y Simulación:</strong> Modelado CAD avanzado, análisis de elementos finitos y evaluación de esfuerzos y deformaciones en componentes mecánicos estructurales.</span>
+          <span class="text-[var(--ink)]"><strong>Instrumentación y Alta Especialidad:</strong> Diagnóstico y gestión de equipos de imagen médica avanzada, como Resonancia Magnética y Aceleradores Lineales.</span>
         </li>
         <li class="flex items-start">
           <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Sistemas Eléctricos y de Potencia:</strong> Diseño, implementación y diagnóstico de instalaciones eléctricas industriales, electrónica analógica y control de motores de alta capacidad.</span>
+          <span class="text-[var(--ink)]"><strong>Biónica y Rehabilitación:</strong> Diseño y control de sockets protésicos activos integrados con sensores de presión y bioimpedancia mediante microcontroladores.</span>
         </li>
         <li class="flex items-start">
           <svg class="w-6 h-6 text-[var(--yellow)] mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span class="text-[var(--ink)]"><strong>Automatización Industrial:</strong> Integración de sistemas electromecánicos y optimización de procesos de manufactura mediante tecnologías de control avanzado.</span>
+          <span class="text-[var(--ink)]"><strong>Ingeniería Clínica:</strong> Evaluación de normativas, logística hospitalaria y prácticas directas en centros de salud.</span>
         </li>
       </ul>
     </div>
@@ -140,7 +142,7 @@
           </div>
           <div>
             <p class="text-xs text-[var(--slate)] font-semibold uppercase tracking-wider mb-1">Campo Laboral</p>
-            <p class="text-[var(--ink)] font-medium">Industria automotriz, metalmecánica, sector energético, plantas de manufactura y diseño estructural.</p>
+            <p class="text-[var(--ink)] font-medium">Hospitales, centros de investigación, industria de dispositivos médicos y empresas de servicio técnico especializado.</p>
           </div>
         </div>
 
@@ -193,7 +195,6 @@
         <li><a href="index.html#vida" class="hover:text-white transition">Grupos Estudiantiles</a></li>
         <li><a href="#" class="hover:text-white transition">Egresados</a></li>
         <li><a href="#" class="hover:text-white transition">CIDEI 2026</a></li>
-        <li><a href="#" class="hover:text-white transition">SISA</a></li>
       </ul>
     </div>
     <div>

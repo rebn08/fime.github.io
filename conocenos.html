@@ -26,8 +26,10 @@
   @media (min-width:768px){ .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);} }
   .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
   .fade-up.in{opacity:1; transform:translateY(0);}
-  .gallery-img{transition:transform .5s ease, filter .5s ease;}
-  .gallery-img:hover{transform:scale(1.03); filter:saturate(1.1);}
+  
+  /* Estilos para el carrusel interactivo */
+  .thumb-btn { transition: all 0.3s ease; }
+  .thumb-btn.active { border-color: var(--yellow); transform: scale(1.05); }
 </style>
 </head>
 <body class="antialiased">
@@ -96,7 +98,7 @@
     </div>
   </div>
 
-  <!-- MISIÓN Y VISIÓN (Sin la M y V flotantes) -->
+  <!-- MISIÓN Y VISIÓN -->
   <div class="grid md:grid-cols-2 gap-8 mb-20">
     <div class="bg-white p-8 rounded-2xl border border-black/5 shadow-sm fade-up">
       <h3 class="font-display text-2xl font-semibold text-[var(--blue-deep)] mb-4 pb-2 border-b border-black/5">Misión</h3>
@@ -113,23 +115,34 @@
     </div>
   </div>
 
-  <!-- GALERÍA / CARRUSEL DE FOTOS DE LA FACULTAD -->
-  <div class="mb-20 fade-up">
-    <div class="text-center max-w-2xl mx-auto mb-10">
+  <!-- CARRUSEL INTERACTIVO DE FOTOS -->
+  <div class="mb-20 fade-up max-w-4xl mx-auto">
+    <div class="text-center max-w-2xl mx-auto mb-8">
       <p class="text-[var(--yellow)] font-semibold text-xs tracking-widest mb-2">GALERÍA INSTITUCIONAL</p>
       <h2 class="font-display text-3xl font-semibold text-[var(--blue-deep)]">Instalaciones y Campus</h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <div class="overflow-hidden rounded-2xl shadow-md h-64 bg-gray-100">
-        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1000&auto=format&fit=crop" alt="Laboratorio FIME" class="gallery-img w-full h-full object-cover">
+    <!-- Visor de la Imagen Grande -->
+    <div class="bg-white p-2 rounded-2xl shadow-lg border border-black/5 mb-4">
+      <div class="overflow-hidden rounded-xl h-[350px] md:h-[450px] bg-gray-100 relative">
+        <img id="main-display-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop" alt="Campus FIME" class="w-full h-full object-cover transition-opacity duration-300">
       </div>
-      <div class="overflow-hidden rounded-2xl shadow-md h-64 bg-gray-100">
-        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1000&auto=format&fit=crop" alt="Estudiantes en práctica" class="gallery-img w-full h-full object-cover">
-      </div>
-      <div class="overflow-hidden rounded-2xl shadow-md h-64 bg-gray-100">
-        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000&auto=format&fit=crop" alt="Trabajo en equipo FIME" class="gallery-img w-full h-full object-cover">
-      </div>
+    </div>
+
+    <!-- Miniaturas Inferiores para Selección -->
+    <div class="grid grid-cols-4 gap-3 md:gap-4">
+      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn active overflow-hidden rounded-xl h-20 md:h-24 border-2 border-[var(--yellow)] bg-gray-100 focus:outline-none">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=400&auto=format&fit=crop" alt="Lab 1" class="w-full h-full object-cover">
+      </button>
+      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
+        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=400&auto=format&fit=crop" alt="Lab 2" class="w-full h-full object-cover">
+      </button>
+      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400&auto=format&fit=crop" alt="Estudiantes" class="w-full h-full object-cover">
+      </button>
+      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400&auto=format&fit=crop" alt="Campus" class="w-full h-full object-cover">
+      </button>
     </div>
   </div>
 
@@ -169,6 +182,27 @@
 </footer>
 
 <script>
+  // Script para el carrusel interactivo de fotos
+  function changeImage(button, imageUrl) {
+    const mainImg = document.getElementById('main-display-img');
+    
+    // Efecto de desvanecimiento suave
+    mainImg.style.opacity = '0';
+    setTimeout(() => {
+      mainImg.src = imageUrl;
+      mainImg.style.opacity = '1';
+    }, 200);
+
+    // Actualizar clases activas en las miniaturas
+    document.querySelectorAll('.thumb-btn').forEach(btn => {
+      btn.classList.remove('active', 'border-[var(--yellow)]');
+      btn.classList.add('border-transparent');
+    });
+    button.classList.add('active', 'border-[var(--yellow)]');
+    button.classList.remove('border-transparent');
+  }
+
+  // Animación de aparición (Scroll reveal)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

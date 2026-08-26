@@ -43,7 +43,7 @@
 </head>
 <body class="antialiased">
 
-<!-- NAVBAR (Sin Vida Estudiantil y con Inicio) -->
+<!-- NAVBAR -->
 <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.5);">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
     <a href="#inicio" class="flex items-center">
@@ -52,7 +52,7 @@
     <div class="hidden md:flex items-center gap-8 text-sm text-white/90 font-medium">
       <a href="index.html" class="nav-link font-semibold text-[var(--yellow)]">Inicio</a>
       <a href="index.html#oferta" class="nav-link">Oferta educativa</a>
-      <!-- <a href="#vida" class="nav-link">Vida estudiantil</a> (Oculto del menú para futuro blog) -->
+      <!-- <a href="#vida" class="nav-link">Vida estudiantil</a> -->
       <a href="tienda.html" class="nav-link">FIME Store</a>
       <a href="#conocenos-cta" class="nav-link">Conócenos</a>
       <a href="#footer" class="nav-link">Contacto</a>
@@ -201,43 +201,43 @@
   </div>
 </section>
 
-<!-- VIDA ESTUDIANTIL (Mantenida en la página) -->
-<section id="vida" class="bg-[var(--blue-deep)] py-20 md:py-28">
+<!-- VIDA ESTUDIANTIL (Franja recortada y centrada) -->
+<section id="vida" class="bg-[var(--blue-deep)] py-12 md:py-16">
   <div class="max-w-7xl mx-auto px-5 md:px-8">
-    <div class="mb-14 fade-up">
-      <p class="text-[var(--yellow)] font-semibold tracking-[0.18em] text-xs mb-3">VIDA ESTUDIANTIL</p>
-      <h2 class="font-display font-semibold text-3xl md:text-5xl text-white max-w-xl">
+    <div class="max-w-3xl mx-auto text-center mb-10 fade-up">
+      <p class="text-[var(--yellow)] font-semibold tracking-[0.18em] text-xs mb-2">VIDA ESTUDIANTIL</p>
+      <h2 class="font-display font-semibold text-3xl md:text-4xl text-white">
         Liderazgo e Innovación Constante
       </h2>
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-      <div class="gallery-item relative rounded-xl overflow-hidden h-64 md:h-80 col-span-2 row-span-2 fade-up group">
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes conversando en el campus" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <span class="absolute bottom-4 left-4 text-white font-semibold text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">Capítulo Estudiantil IEEE</span>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-44 md:h-52 fade-up group shadow-md">
+        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes en campus" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+          <span class="text-white font-semibold text-xs">Capítulo IEEE</span>
+        </div>
       </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up group">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-44 md:h-52 fade-up group shadow-md">
         <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=1974&auto=format&fit=crop" alt="Equipo universitario" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <span class="absolute bottom-3 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">Comunidad CURI</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+          <span class="text-white font-semibold text-xs">Comunidad CURI</span>
+        </div>
       </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-36 fade-up group">
-        <img src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes participando en debate" class="w-full h-full object-cover">
-        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <span class="absolute bottom-3 left-3 text-white font-semibold text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300">Comunidad Quantum</span>
+      <div class="gallery-item relative rounded-xl overflow-hidden h-44 md:h-52 fade-up group shadow-md">
+        <img src="https://images.unsplash.com/photo-1526976668912-1a811878dd37?q=80&w=1974&auto=format&fit=crop" alt="Estudiantes en debate" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-[var(--ink)]/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+          <span class="text-white font-semibold text-xs">Comunidad Quantum</span>
+        </div>
       </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-40 fade-up">
+      <div class="gallery-item relative rounded-xl overflow-hidden h-44 md:h-52 fade-up group shadow-md">
         <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?q=80&w=1974&auto=format&fit=crop" alt="Evento estudiantil" class="w-full h-full object-cover">
-      </div>
-      <div class="gallery-item relative rounded-xl overflow-hidden h-32 md:h-40 fade-up">
-        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1974&auto=format&fit=crop" alt="Biblioteca y espacios" class="w-full h-full object-cover">
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONÓCENOS CTA (Reemplazando la franja anterior) -->
+<!-- CONÓCENOS CTA -->
 <section id="conocenos-cta" class="relative py-20 md:py-28 overflow-hidden">
   <div class="absolute inset-0 bg-[var(--blue)]"></div>
   <div class="absolute -right-24 -top-24 w-96 h-96 bg-[var(--yellow)]/20 rounded-full blur-3xl"></div>

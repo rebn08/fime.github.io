@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicios - FIME U.N. - UAdeC</title>
+<link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blue-deep:#102A54;
+    --blue:#1E4CA8;
+    --yellow:#F4B400;
+    --paper:#FBFBF9;
+    --ink:#0E1B33;
+    --slate:#5C6B84;
+  }
+  *{box-sizing:border-box;}
+  body{font-family:'Space Grotesk',sans-serif; background:var(--paper); color:var(--ink);}
+  .font-display{font-family:'Fraunces',serif;}
+  .nav-link{position:relative;}
+  .nav-link::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--yellow);transition:width .3s ease;}
+  .nav-link:hover::after{width:100%;}
+  .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);}
+  @media (min-width:768px){ .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);} }
+  
+  /* Animaciones de tarjetas y scroll */
+  .service-card{transition:transform .4s ease, box-shadow .4s ease, border-color .4s ease;}
+  .service-card:hover{transform:translateY(-6px); box-shadow:0 20px 40px -15px rgba(16,42,84,.15); border-color:var(--yellow);}
+  .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+  ::selection{background:var(--yellow); color:var(--blue-deep);}
+  summary::-webkit-details-marker { display: none; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAVBAR CON HIGHLIGHT EN SERVICIOS -->
+<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.85);">
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
+    <a href="index.html" class="flex items-center">
+      <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-12 w-auto object-contain">
+    </a>
+    
+    <div class="hidden md:flex items-center gap-8 text-sm text-white/90 font-medium">
+      <a href="index.html" class="nav-link">Inicio</a>
+      
+      <!-- DROPDOWN OFERTA EDUCATIVA -->
+      <div class="relative group py-2">
+        <button class="nav-link flex items-center gap-1.5 outline-none focus:outline-none">
+          Oferta Educativa
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <div class="w-64 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden text-sm flex flex-col text-left">
+            <a href="mecatronica.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium border-b border-gray-100 transition-colors">Ing. Mecatrónica</a>
+            <a href="biomedica.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium border-b border-gray-100 transition-colors">Ing. Biomédica</a>
+            <a href="sistemas.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium border-b border-gray-100 transition-colors">Ing. Sistemas Computacionales</a>
+            <a href="mecanico.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium transition-colors">Ing. Mecánico Electricista</a>
+          </div>
+        </div>
+      </div>
+
+      <a href="conocenos.html" class="nav-link">Conócenos</a>
+      <a href="tienda.html" class="nav-link">FIME Store</a>
+      <a href="servicios.html" class="nav-link text-[var(--yellow)] font-semibold">Servicios</a>
+      <a href="#footer" class="nav-link">Contacto</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#footer" class="hidden md:inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold text-sm px-5 py-2.5 rounded-full hover:brightness-105 transition">
+        Contáctanos
+      </a>
+      <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white p-2">
+        <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MENÚ MÓVIL ACORDEÓN -->
+  <div id="mobile-menu" class="md:hidden max-h-0 overflow-y-auto opacity-0" style="background-color: rgba(16, 42, 84, 0.95); transition: max-height 0.4s ease, opacity 0.3s ease;">
+    <div class="flex flex-col gap-1 px-5 pb-6 text-white/90 font-medium">
+      <a href="index.html" class="py-3 border-b border-white/10">Inicio</a>
+      
+      <details class="group border-b border-white/10">
+        <summary class="py-3 flex justify-between items-center font-medium cursor-pointer list-none outline-none">
+          Oferta Educativa
+          <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pl-4 pb-3 flex flex-col gap-3 mt-1 text-sm text-white/70">
+          <a href="mecatronica.html" class="hover:text-[var(--yellow)] transition">Ing. Mecatrónica</a>
+          <a href="biomedica.html" class="hover:text-[var(--yellow)] transition">Ing. Biomédica</a>
+          <a href="sistemas.html" class="hover:text-[var(--yellow)] transition">Ing. Sistemas Computacionales</a>
+          <a href="mecanico.html" class="hover:text-[var(--yellow)] transition">Ing. Mecánico Electricista</a>
+        </div>
+      </details>
+
+      <a href="conocenos.html" class="py-3 border-b border-white/10">Conócenos</a>
+      <a href="tienda.html" class="py-3 border-b border-white/10">FIME Store</a>
+      <a href="servicios.html" class="py-3 border-b border-white/10 text-[var(--yellow)] font-semibold">Servicios</a>
+      <a href="#footer" class="py-3 border-b border-white/10">Contacto</a>
+      <a href="#footer" class="mt-5 mb-2 text-center bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-5 py-3 rounded-full">Contáctanos</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO SERVICIOS -->
+<section class="relative min-h-[50vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
+  <!-- Imagen de fondo genérica de tecnología/oficina -->
+  <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Portal de Servicios" class="absolute inset-0 w-full h-full object-cover">
+  <div class="absolute inset-0 bg-[#102A54] opacity-85"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
+
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-16 w-full text-center fade-up">
+    <p class="text-[var(--yellow)] font-semibold tracking-[0.2em] text-xs md:text-sm mb-4">ACCESOS RÁPIDOS</p>
+    <h1 class="font-display font-semibold text-white text-4xl sm:text-5xl md:text-6xl leading-[1.05] max-w-4xl mx-auto mb-6">
+      Portal de Servicios
+    </h1>
+    <p class="text-white/80 text-lg max-w-2xl mx-auto mb-10">
+      Encuentra todos los trámites, plataformas y enlaces de la UAdeC centralizados en un solo lugar.
+    </p>
+
+    <!-- Barra de Búsqueda -->
+    <div class="max-w-xl mx-auto relative text-left">
+      <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+        <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="Buscar un servicio (ej. Horarios, Nómina, SISA)..." class="w-full bg-white text-[var(--ink)] rounded-full py-4 pl-12 pr-6 shadow-xl border-none focus:ring-4 focus:ring-[var(--yellow)] outline-none transition">
+    </div>
+  </div>
+</section>
+
+<!-- CONTENIDO: CUADRÍCULA DE SERVICIOS -->
+<section class="max-w-7xl mx-auto px-5 md:px-8 py-20 min-h-[50vh]">
+  
+  <!-- CONTENEDOR ESTUDIANTES -->
+  <div class="mb-16 fade-up">
+    <div class="flex items-center gap-3 mb-8 border-b border-black/10 pb-4">
+      <div class="bg-[var(--blue-deep)] text-[var(--yellow)] p-2 rounded-lg">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+      </div>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-[var(--blue-deep)]">Servicios Estudiantiles</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="studentServices">
+      
+      <!-- Card: Boletas de Pago -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Boletas de Pago</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Genera tus fichas de inscripción, cuotas internas y realiza pagos en línea en el portal SIIA.</p>
+      </a>
+
+      <!-- Card: Horarios -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Horarios y Carga</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Consulta la tira de materias, profesores asignados y aulas correspondientes a tu semestre.</p>
+      </a>
+
+      <!-- Card: Kardex -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Kardex de Calificaciones</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Revisa tu historial académico, promedio general y estatus de materias aprobadas.</p>
+      </a>
+
+      <!-- Card: Servicio Social -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Servicio Social</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Formatos, seguimiento de horas y liberación del servicio social y prácticas profesionales.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- CONTENEDOR DOCENTES Y ADMINISTRATIVOS -->
+  <div class="fade-up">
+    <div class="flex items-center gap-3 mb-8 border-b border-black/10 pb-4">
+      <div class="bg-[var(--blue-deep)] text-[var(--yellow)] p-2 rounded-lg">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"/></svg>
+      </div>
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-[var(--blue-deep)]">Portal Docente y Administrativo</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="teacherServices">
+      
+      <!-- Card: SISA -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--blue-deep)] text-white w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--yellow)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Sistema SISA</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Sistema de información y gestión administrativa de la facultad (Generación de horarios FIME).</p>
+      </a>
+
+      <!-- Card: Captura de Calificaciones -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--blue-deep)] text-white w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--yellow)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Captura de Calificaciones</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Portal oficial UAdeC para la captura de calificaciones parciales y actas finales.</p>
+      </a>
+
+      <!-- Card: Nómina -->
+      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--blue-deep)] text-white w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--yellow)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Recibos de Nómina</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Acceso a la plataforma de Recursos Humanos para descarga de talones y constancias.</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- Mensaje de no resultados (oculto por defecto) -->
+  <div id="noResults" class="hidden text-center py-10">
+    <p class="text-[var(--slate)] text-lg">No se encontraron servicios con ese término.</p>
+  </div>
+
+</section>
+
+<!-- FOOTER COMPLETO INSTITUCIONAL FIME -->
+<footer id="footer" class="bg-[var(--ink)] text-white/70 pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+    <div class="col-span-2 md:col-span-1">
+      <p class="font-display font-semibold text-white text-xl mb-3">FIME Unidad Norte</p>
+      <p class="text-sm leading-relaxed max-w-[26ch]">69 Aniversario (1957–2026). Formando ingenieros con excelencia y visión global.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="Facebook" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.7-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.7.8 1 1.5.2.5.4 1.3.5 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.8.7-1.5 1-.5.2-1.3.4-2.5.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.7-.8-1-1.5-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.8-.7 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.1 0-3.5 0-4.7.1-1 0-1.6.2-2 .4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2C2.8 9.5 2.8 9.9 2.8 13s0 3.5.1 4.7c0 1 .2 1.6.4 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1 0 1.6-.2 2-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c0-1-.2-1.6-.4-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1Zm0 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11Zm0 1.8a3.6 3.6 0 1 0 0 7.3 3.6 3.6 0 0 0 0-7.3Zm5.7-2a1.3 1.3 0 1 1-2.6 0 1.3 1.3 0 0 1 2.6 0Z"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center hover:bg-[var(--yellow)] hover:text-[var(--ink)] hover:border-[var(--yellow)] transition">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M6.9 8.4H3.3V20h3.6V8.4ZM5.1 3.1a2.1 2.1 0 1 0 0 4.2 2.1 2.1 0 0 0 0-4.2ZM20.7 20h-3.6v-6.3c0-1.5-.5-2.5-1.8-2.5-1 0-1.6.7-1.9 1.3-.1.2-.1.6-.1.9V20H9.7s.1-10.6 0-11.6h3.6v1.6c.5-.7 1.3-1.8 3.2-1.8 2.3 0 4.1 1.5 4.1 4.8V20Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Institucional</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="conocenos.html" class="hover:text-white transition">Conócenos</a></li>
+        <li><a href="index.html#oferta" class="hover:text-white transition">Oferta Educativa</a></li>
+        <li><a href="servicios.html" class="hover:text-white transition">Servicios</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad UAdeC</p>
+      <ul class="space-y-2.5 text-sm">
+        <li><a href="tienda.html" class="hover:text-white transition">FIME Store</a></li>
+        <li><a href="#" class="hover:text-white transition">SISA</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Contacto</p>
+      <ul class="space-y-2.5 text-sm">
+        <li>Campus Monclova, Coahuila</li>
+        <li>admisiones@fime.uadec.mx</li>
+        <li>+52 866 123 4567</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
+    <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
+    <div class="flex gap-5">
+      <a href="#" class="hover:text-white/70 transition">Aviso de privacidad</a>
+      <a href="#" class="hover:text-white/70 transition">Directorio</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+  let menuOpen = false;
+
+  menuBtn.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    menuBtn.setAttribute('aria-expanded', String(menuOpen));
+    if (menuOpen) {
+      mobileMenu.style.maxHeight = '100vh';
+      mobileMenu.style.opacity = '1';
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+    } else {
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+    }
+  });
+
+  // Cerrar menú al dar click
+  document.querySelectorAll('#mobile-menu a:not(summary)').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.style.maxHeight = '0px';
+      mobileMenu.style.opacity = '0';
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Función para filtrar servicios con el buscador
+  function filterServices() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const cards = document.querySelectorAll('.service-card');
+    let hasResults = false;
+
+    cards.forEach(card => {
+      const title = card.querySelector('h3').innerText.toLowerCase();
+      const desc = card.querySelector('p').innerText.toLowerCase();
+      
+      if (title.includes(input) || desc.includes(input)) {
+        card.style.display = 'block';
+        hasResults = true;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    document.getElementById('noResults').style.display = hasResults ? 'none' : 'block';
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

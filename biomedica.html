@@ -29,25 +29,43 @@
   .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
   .fade-up.in{opacity:1; transform:translateY(0);}
   ::selection{background:var(--yellow); color:var(--blue-deep);}
+  summary::-webkit-details-marker { display: none; }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- NAVBAR -->
-<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.5);">
+<header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.85);">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
     <a href="index.html" class="flex items-center">
       <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" alt="Logo FIME" class="h-12 w-auto object-contain">
     </a>
+    
     <div class="hidden md:flex items-center gap-8 text-sm text-white/90 font-medium">
       <a href="index.html" class="nav-link">Inicio</a>
+      
+      <div class="relative group py-2">
+        <button class="nav-link flex items-center gap-1.5 text-[var(--yellow)] font-semibold outline-none focus:outline-none">
+          Oferta Educativa
+          <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </button>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+          <div class="w-64 bg-white rounded-xl shadow-2xl border border-gray-100 overflow-hidden text-sm flex flex-col text-left">
+            <a href="mecatronica.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium border-b border-gray-100 transition-colors">Ing. Mecatrónica</a>
+            <a href="biomedica.html" class="px-5 py-3.5 text-[var(--blue)] bg-[var(--paper)] font-bold border-b border-gray-100 transition-colors">Ing. Biomédica</a>
+            <a href="sistemas.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium border-b border-gray-100 transition-colors">Ing. Sistemas Computacionales</a>
+            <a href="mecanico.html" class="px-5 py-3.5 text-[var(--ink)] hover:bg-[var(--paper)] hover:text-[var(--blue)] font-medium transition-colors">Ing. Mecánico Electricista</a>
+          </div>
+        </div>
+      </div>
+
       <a href="conocenos.html" class="nav-link">Conócenos</a>
-      <a href="index.html#oferta" class="nav-link text-[var(--yellow)] font-semibold">Oferta educativa</a>
       <a href="tienda.html" class="nav-link">FIME Store</a>
-      <a href="index.html#admisiones" class="nav-link">Admisiones</a>
+      <a href="servicios.html" class="nav-link">Servicios</a>
+      <a href="#footer" class="nav-link">Contacto</a>
     </div>
+
     <div class="flex items-center gap-3">
-      <a href="index.html#admisiones" class="hidden md:inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold text-sm px-5 py-2.5 rounded-full hover:brightness-105 active:scale-95 transition">
+      <a href="#footer" class="hidden md:inline-flex bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold text-sm px-5 py-2.5 rounded-full hover:brightness-105 transition">
         Contáctanos
       </a>
       <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white p-2">
@@ -60,23 +78,38 @@
       </button>
     </div>
   </nav>
-  <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden opacity-0" style="background-color: rgba(16, 42, 84, 0.95);">
-    <div class="flex flex-col gap-1 px-5 pb-5 text-white/90 font-medium">
-      <a href="index.html#oferta" class="py-3 border-b border-white/10">Oferta educativa</a>
-      <a href="index.html#vida" class="py-3 border-b border-white/10">Vida estudiantil</a>
-      <a href="index.html#admisiones" class="py-3 border-b border-white/10">Admisiones</a>
+
+  <div id="mobile-menu" class="md:hidden max-h-0 overflow-y-auto opacity-0" style="background-color: rgba(16, 42, 84, 0.95); transition: max-height 0.4s ease, opacity 0.3s ease;">
+    <div class="flex flex-col gap-1 px-5 pb-6 text-white/90 font-medium">
+      <a href="index.html" class="py-3 border-b border-white/10">Inicio</a>
+      
+      <details class="group border-b border-white/10" open>
+        <summary class="py-3 flex justify-between items-center font-semibold text-[var(--yellow)] cursor-pointer list-none outline-none">
+          Oferta Educativa
+          <svg class="w-4 h-4 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div class="pl-4 pb-3 flex flex-col gap-3 mt-1 text-sm text-white/70">
+          <a href="mecatronica.html" class="hover:text-[var(--yellow)] transition">Ing. Mecatrónica</a>
+          <a href="biomedica.html" class="text-[var(--yellow)] font-bold transition">Ing. Biomédica</a>
+          <a href="sistemas.html" class="hover:text-[var(--yellow)] transition">Ing. Sistemas Computacionales</a>
+          <a href="mecanico.html" class="hover:text-[var(--yellow)] transition">Ing. Mecánico Electricista</a>
+        </div>
+      </details>
+
+      <a href="conocenos.html" class="py-3 border-b border-white/10">Conócenos</a>
+      <a href="tienda.html" class="py-3 border-b border-white/10">FIME Store</a>
+      <a href="servicios.html" class="py-3 border-b border-white/10">Servicios</a>
       <a href="#footer" class="py-3 border-b border-white/10">Contacto</a>
-      <a href="index.html#admisiones" class="mt-4 mb-2 text-center bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-5 py-3 rounded-full">Contáctanos</a>
+      <a href="#footer" class="mt-5 mb-2 text-center bg-[var(--yellow)] text-[var(--blue-deep)] font-semibold px-5 py-3 rounded-full">Contáctanos</a>
     </div>
   </div>
 </header>
 
-<!-- HERO BIOMÉDICA CON IMAGEN ESTÁTICA Y OPACIDAD -->
 <section class="relative min-h-[70vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
-  <!-- Fotografía representativa (Tecnología Médica / Imagenología) -->
   <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2070&auto=format&fit=crop" alt="Equipamiento de alta especialidad" class="absolute inset-0 w-full h-full object-cover">
   
-  <!-- Doble capa de opacidad para garantizar lectura: un tono azul uniforme y un gradiente inferior -->
   <div class="absolute inset-0 bg-[#102A54] opacity-75"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
 
@@ -91,11 +124,9 @@
   </div>
 </section>
 
-<!-- CONTENIDO DE LA CARRERA -->
 <section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
   
   <div class="grid md:grid-cols-12 gap-12 lg:gap-20">
-    <!-- Columna Izquierda: Descripción -->
     <div class="md:col-span-7 fade-up">
       <h2 class="font-display text-3xl md:text-4xl text-[var(--blue-deep)] font-semibold mb-6">El Futuro de la Tecnología en la Salud</h2>
       <p class="text-[var(--slate)] leading-relaxed mb-6">
@@ -105,7 +136,6 @@
         Nuestros estudiantes desarrollan soluciones integrales que van desde la adquisición y procesamiento de biopotenciales, hasta la gestión y mantenimiento de equipo de soporte vital e imagenología en hospitales de tercer nivel.
       </p>
 
-      <!-- Imagen Intermedia de Laboratorio/Prácticas -->
       <div class="my-10 rounded-2xl overflow-hidden shadow-lg h-64 md:h-80 relative fade-up">
         <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="Prácticas de diseño de prótesis y sensores biomédicos" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
       </div>
@@ -127,7 +157,6 @@
       </ul>
     </div>
 
-    <!-- Columna Derecha: Tarjeta de Info Rápida y Malla Curricular -->
     <div class="md:col-span-5 fade-up">
       <div class="bg-white rounded-2xl shadow-xl border border-black/5 p-8 sticky top-32">
         <h3 class="font-display text-xl text-[var(--blue-deep)] font-semibold mb-6 border-b pb-4">Detalles del Programa</h3>
@@ -147,7 +176,6 @@
           </div>
         </div>
 
-        <!-- Botón para Malla Curricular -->
         <a href="malla_biomedica.html" target="_blank" rel="noopener noreferrer" class="mt-8 w-full flex items-center justify-center gap-3 bg-[var(--blue-deep)] text-white font-semibold py-4 px-6 rounded-full hover:bg-[var(--blue)] active:scale-95 transition-all shadow-md group">
           <svg class="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -163,7 +191,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer id="footer" class="bg-[var(--ink)] text-white/70 pt-16 pb-8">
   <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
     <div class="col-span-2 md:col-span-1">
@@ -182,20 +209,18 @@
       </div>
     </div>
     <div>
-      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Admisiones</p>
+      <p class="text-white font-semibold text-sm mb-4 tracking-wide">Institucional</p>
       <ul class="space-y-2.5 text-sm">
-        <li><a href="index.html#oferta" class="hover:text-white transition">Oferta educativa</a></li>
-        <li><a href="index.html#admisiones" class="hover:text-white transition">Proceso de Ingreso</a></li>
-        <li><a href="index.html#admisiones" class="hover:text-white transition">Cuota interna e inscripción</a></li>
-        <li><a href="#" class="hover:text-white transition">Becas y Apoyos</a></li>
+        <li><a href="conocenos.html" class="hover:text-white transition">Conócenos</a></li>
+        <li><a href="index.html#oferta" class="hover:text-white transition">Oferta Educativa</a></li>
+        <li><a href="servicios.html" class="hover:text-white transition">Servicios</a></li>
       </ul>
     </div>
     <div>
       <p class="text-white font-semibold text-sm mb-4 tracking-wide">Comunidad UAdeC</p>
       <ul class="space-y-2.5 text-sm">
-        <li><a href="index.html#vida" class="hover:text-white transition">Grupos Estudiantiles</a></li>
-        <li><a href="#" class="hover:text-white transition">Egresados</a></li>
-        <li><a href="#" class="hover:text-white transition">CIDEI 2026</a></li>
+        <li><a href="tienda.html" class="hover:text-white transition">FIME Store</a></li>
+        <li><a href="#" class="hover:text-white transition">SISA</a></li>
       </ul>
     </div>
     <div>
@@ -209,10 +234,6 @@
   </div>
   <div class="max-w-7xl mx-auto px-5 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-xs text-white/40">
     <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
-    <div class="flex gap-5">
-      <a href="#" class="hover:text-white/70 transition">Aviso de privacidad</a>
-      <a href="#" class="hover:text-white/70 transition">Directorio</a>
-    </div>
   </div>
 </footer>
 
@@ -228,7 +249,7 @@
     menuOpen = !menuOpen;
     menuBtn.setAttribute('aria-expanded', String(menuOpen));
     if (menuOpen) {
-      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      mobileMenu.style.maxHeight = '100vh';
       mobileMenu.style.opacity = '1';
       iconOpen.classList.add('hidden');
       iconClose.classList.remove('hidden');
@@ -238,18 +259,6 @@
       iconOpen.classList.remove('hidden');
       iconClose.classList.add('hidden');
     }
-  });
-
-  // Close mobile menu after clicking a link
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuOpen = false;
-      mobileMenu.style.maxHeight = '0px';
-      mobileMenu.style.opacity = '0';
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    });
   });
 
   // Scroll reveal

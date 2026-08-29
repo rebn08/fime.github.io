@@ -51,11 +51,16 @@
   </nav>
 </header>
 
-<!-- HERO CONÓCENOS -->
-<section class="relative min-h-[50vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
-  <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Campus FIME" class="absolute inset-0 w-full h-full object-cover opacity-30">
-  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent"></div>
-  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-16 w-full text-center md:text-left">
+<!-- HERO CONÓCENOS (Con la foto institucional) -->
+<section class="relative min-h-[50vh] flex items-center hero-clip overflow-hidden">
+  <!-- Imagen de fondo actualizada -->
+  <img src="https://i.postimg.cc/g2VkMZPK/Captura-de-pantalla-2026-08-29-105648.png" alt="Campus FIME" class="absolute inset-0 w-full h-full object-cover -z-20">
+  
+  <!-- Filtros para oscurecer y dar el tono azul FIME -->
+  <div class="absolute inset-0 bg-[var(--blue-deep)] opacity-80 -z-10"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] via-[var(--blue-deep)]/50 to-transparent opacity-90 -z-10"></div>
+  
+  <div class="relative max-w-7xl mx-auto px-5 md:px-8 pt-32 pb-16 w-full text-center md:text-left z-10">
     <p class="text-[var(--yellow)] font-semibold tracking-[0.2em] text-xs md:text-sm mb-3">IDENTIDAD INSTITUCIONAL</p>
     <h1 class="font-display font-semibold text-white text-4xl sm:text-5xl md:text-6xl leading-[1.1] max-w-3xl mb-4">
       Conócenos

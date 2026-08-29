@@ -26,15 +26,10 @@
   @media (min-width:768px){ .hero-clip{clip-path: polygon(0 0, 100% 0, 100% 82%, 0 100%);} }
   .fade-up{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
   .fade-up.in{opacity:1; transform:translateY(0);}
-  
-  /* Estilos para el carrusel interactivo */
-  .thumb-btn { transition: all 0.3s ease; }
-  .thumb-btn.active { border-color: var(--yellow); transform: scale(1.05); }
 </style>
 </head>
 <body class="antialiased">
 
-<!-- NAVBAR -->
 <header class="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-lg" style="background-color: rgba(16, 42, 84, 0.85);">
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 md:px-8 py-4">
     <a href="index.html" class="flex items-center">
@@ -55,7 +50,6 @@
   </nav>
 </header>
 
-<!-- HERO CONÓCENOS -->
 <section class="relative min-h-[50vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
   <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1974&auto=format&fit=crop" alt="Campus FIME" class="absolute inset-0 w-full h-full object-cover opacity-30">
   <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent"></div>
@@ -70,10 +64,8 @@
   </div>
 </section>
 
-<!-- CONTENIDO: HISTORIA, MISIÓN, VISIÓN -->
 <section class="max-w-7xl mx-auto px-5 md:px-8 py-20">
   
-  <!-- HISTORIA -->
   <div class="grid md:grid-cols-2 gap-12 items-center mb-20 fade-up">
     <div>
       <p class="text-[var(--yellow)] font-semibold text-xs tracking-widest mb-2">NUESTRA TRAYECTORIA</p>
@@ -98,7 +90,6 @@
     </div>
   </div>
 
-  <!-- MISIÓN Y VISIÓN (Con texto justificado) -->
   <div class="grid md:grid-cols-2 gap-8 mb-20">
     <div class="bg-white p-8 rounded-2xl border border-black/5 shadow-sm fade-up">
       <h3 class="font-display text-2xl font-semibold text-[var(--blue-deep)] mb-4 pb-2 border-b border-black/5">Misión</h3>
@@ -115,38 +106,19 @@
     </div>
   </div>
 
-  <!-- CARRUSEL INTERACTIVO DE FOTOS -->
   <div class="mb-20 fade-up max-w-4xl mx-auto">
     <div class="text-center max-w-2xl mx-auto mb-8">
-      <p class="text-[var(--yellow)] font-semibold text-xs tracking-widest mb-2">GALERÍA INSTITUCIONAL</p>
-      <h2 class="font-display text-3xl font-semibold text-[var(--blue-deep)]">Instalaciones y Campus</h2>
+      <p class="text-[var(--yellow)] font-semibold text-xs tracking-widest mb-2">EXPERIENCIA FIME</p>
+      <h2 class="font-display text-3xl font-semibold text-[var(--blue-deep)]">Nuestra Facultad en Video</h2>
     </div>
 
-    <!-- Visor de la Imagen Grande -->
-    <div class="bg-white p-2 rounded-2xl shadow-lg border border-black/5 mb-4">
-      <div class="overflow-hidden rounded-xl h-[350px] md:h-[450px] bg-gray-100 relative">
-        <img id="main-display-img" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop" alt="Campus FIME" class="w-full h-full object-cover transition-opacity duration-300">
+    <div class="bg-white p-3 rounded-2xl shadow-xl border border-black/5">
+      <div class="relative overflow-hidden rounded-xl shadow-inner bg-black aspect-video">
+        <iframe src="https://www.dropbox.com/scl/fi/rnttexlidzotj095diknu/FIME-MVA_5.mp4?rlkey=kl4la58ua2ivw494x7g3tq1fe&st=2howwtz6&raw=1" class="absolute inset-0 w-full h-full border-0" allowfullscreen></iframe>
       </div>
-    </div>
-
-    <!-- Miniaturas Inferiores para Selección -->
-    <div class="grid grid-cols-4 gap-3 md:gap-4">
-      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn active overflow-hidden rounded-xl h-20 md:h-24 border-2 border-[var(--yellow)] bg-gray-100 focus:outline-none">
-        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=400&auto=format&fit=crop" alt="Lab 1" class="w-full h-full object-cover">
-      </button>
-      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
-        <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?q=80&w=400&auto=format&fit=crop" alt="Lab 2" class="w-full h-full object-cover">
-      </button>
-      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
-        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=400&auto=format&fit=crop" alt="Estudiantes" class="w-full h-full object-cover">
-      </button>
-      <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop')" class="thumb-btn overflow-hidden rounded-xl h-20 md:h-24 border-2 border-transparent bg-gray-100 focus:outline-none">
-        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=400&auto=format&fit=crop" alt="Campus" class="w-full h-full object-cover">
-      </button>
     </div>
   </div>
 
-  <!-- VALORES INSTITUCIONALES -->
   <div class="bg-white p-8 md:p-12 rounded-2xl border border-black/5 shadow-sm text-center fade-up">
     <p class="text-[var(--yellow)] font-semibold text-xs tracking-widest mb-2">PRINCIPIOS QUE NOS GUÍAN</p>
     <h2 class="font-display text-3xl font-semibold text-[var(--blue-deep)] mb-10">Nuestros Valores</h2>
@@ -173,7 +145,6 @@
 
 </section>
 
-<!-- FOOTER -->
 <footer class="bg-[var(--ink)] text-white/70 pt-12 pb-8">
   <div class="max-w-7xl mx-auto px-5 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 border-t border-white/10 pt-6">
     <p>© 2026 FIME Unidad Norte - UAdeC. Todos los derechos reservados.</p>
@@ -182,26 +153,6 @@
 </footer>
 
 <script>
-  // Script para el carrusel interactivo de fotos
-  function changeImage(button, imageUrl) {
-    const mainImg = document.getElementById('main-display-img');
-    
-    // Efecto de desvanecimiento suave
-    mainImg.style.opacity = '0';
-    setTimeout(() => {
-      mainImg.src = imageUrl;
-      mainImg.style.opacity = '1';
-    }, 200);
-
-    // Actualizar clases activas en las miniaturas
-    document.querySelectorAll('.thumb-btn').forEach(btn => {
-      btn.classList.remove('active', 'border-[var(--yellow)]');
-      btn.classList.add('border-transparent');
-    });
-    button.classList.add('active', 'border-[var(--yellow)]');
-    button.classList.remove('border-transparent');
-  }
-
   // Animación de aparición (Scroll reveal)
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {

@@ -115,7 +115,6 @@
 
 <!-- HERO SERVICIOS -->
 <section class="relative min-h-[50vh] flex items-center hero-clip overflow-hidden bg-[var(--ink)]">
-  <!-- Imagen de fondo genérica de tecnología/oficina -->
   <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop" alt="Portal de Servicios" class="absolute inset-0 w-full h-full object-cover">
   <div class="absolute inset-0 bg-[#102A54] opacity-85"></div>
   <div class="absolute inset-0 bg-gradient-to-t from-[var(--blue-deep)] to-transparent opacity-90"></div>
@@ -136,7 +135,7 @@
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
       </div>
-      <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="Buscar un servicio (ej. Horarios, Nómina, SISA)..." class="w-full bg-white text-[var(--ink)] rounded-full py-4 pl-12 pr-6 shadow-xl border-none focus:ring-4 focus:ring-[var(--yellow)] outline-none transition">
+      <input type="text" id="searchInput" onkeyup="filterServices()" placeholder="Buscar un servicio (ej. Correo, SIIA, Servicio Social)..." class="w-full bg-white text-[var(--ink)] rounded-full py-4 pl-12 pr-6 shadow-xl border-none focus:ring-4 focus:ring-[var(--yellow)] outline-none transition">
     </div>
   </div>
 </section>
@@ -153,43 +152,35 @@
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-[var(--blue-deep)]">Servicios Estudiantiles</h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="studentServices">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="studentServices">
       
-      <!-- Card: Boletas de Pago -->
-      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+      <!-- Card: Correo Electrónico Universitario -->
+      <a href="https://www.uadec.edu.mx" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        </div>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Correo Electrónico Universitario</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Crear cuenta de correo institucional y cambio de contraseña.</p>
+      </a>
+
+      <!-- Card: SIIA -->
+      <a href="http://www.siia.uadec.mx/alumnos/marcos.htm" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
         <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
         </div>
-        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Boletas de Pago</h3>
-        <p class="text-sm text-[var(--slate)] leading-relaxed">Genera tus fichas de inscripción, cuotas internas y realiza pagos en línea en el portal SIIA.</p>
-      </a>
-
-      <!-- Card: Horarios -->
-      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
-        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-        </div>
-        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Horarios y Carga</h3>
-        <p class="text-sm text-[var(--slate)] leading-relaxed">Consulta la tira de materias, profesores asignados y aulas correspondientes a tu semestre.</p>
-      </a>
-
-      <!-- Card: Kardex -->
-      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
-        <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
-          <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-        </div>
-        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Kardex de Calificaciones</h3>
-        <p class="text-sm text-[var(--slate)] leading-relaxed">Revisa tu historial académico, promedio general y estatus de materias aprobadas.</p>
+        <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">SIIA</h3>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Consulta estados de cuenta UAdeC y escuela, kardex no oficial y generación de boletas de pago.</p>
       </a>
 
       <!-- Card: Servicio Social -->
-      <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
+      <a href="https://serviciosocial.uadec.mx" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">
         <div class="bg-[var(--yellow)]/20 text-[var(--yellow)] w-12 h-12 rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6 text-[var(--blue-deep)]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
         <h3 class="font-semibold text-lg text-[var(--ink)] mb-2">Servicio Social</h3>
-        <p class="text-sm text-[var(--slate)] leading-relaxed">Formatos, seguimiento de horas y liberación del servicio social y prácticas profesionales.</p>
+        <p class="text-sm text-[var(--slate)] leading-relaxed">Plataforma oficial para la gestión y registro del servicio social.</p>
       </a>
+
     </div>
   </div>
 
@@ -202,7 +193,7 @@
       <h2 class="font-display text-2xl md:text-3xl font-semibold text-[var(--blue-deep)]">Portal Docente y Administrativo</h2>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="teacherServices">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="teacherServices">
       
       <!-- Card: SISA -->
       <a href="#" target="_blank" rel="noopener noreferrer" class="service-card block bg-white rounded-2xl p-6 border-2 border-transparent shadow-sm hover:bg-[var(--paper)]">

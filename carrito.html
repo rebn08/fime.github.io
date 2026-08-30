@@ -99,42 +99,45 @@
 <!-- VISTA DEL TICKET FINAL -->
 <main id="vista-ticket" class="max-w-3xl mx-auto px-5 md:px-8 pt-32 pb-24 min-h-[70vh] hidden">
   
-  <!-- ESTE ES EL DIV QUE SE CONVIERTE EN IMAGEN -->
-  <div id="ticket-capture" class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border-t-8 border-[var(--blue-deep)] text-center relative overflow-hidden mb-8">
-    <!-- Fondo decorativo -->
-    <div class="absolute -top-10 -right-10 opacity-10">
+  <!-- ESTE ES EL DIV QUE SE CONVIERTE EN IMAGEN (Ajustado para html2canvas) -->
+  <div id="ticket-capture" class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border-t-8 border-[#102A54] text-center relative overflow-hidden mb-8" style="background-color: white;">
+    <!-- Fondo decorativo sutil -->
+    <div class="absolute -top-10 -right-10 opacity-10" style="color: #102A54;">
       <svg class="w-40 h-40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z"/></svg>
     </div>
-    <!-- Escudo FIME (opcional si quieres que salga en la foto) -->
+
+    <!-- Título de la tienda en texto sólido para evitar bugs de imagen -->
     <div class="flex justify-center mb-4">
-      <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" style="filter: brightness(0) invert(0);" class="h-12 opacity-80" alt="Logo FIME">
+      <h3 class="font-display font-bold text-2xl tracking-wide" style="color: #102A54;">FIME STORE</h3>
     </div>
 
-    <h2 class="font-display text-3xl font-bold text-[var(--ink)] mb-2">Comprobante de Pedido</h2>
-    <p class="text-[var(--slate)] mb-8">Presenta este código en Dirección Administrativa de la FIME Monclova para realizar tu pago.</p>
+    <h2 class="font-display text-3xl font-bold mb-2" style="color: #0E1B33;">Comprobante de Pedido</h2>
+    <p class="mb-8" style="color: #5C6B84;">Presenta este código en Dirección Administrativa de la FIME Monclova para realizar tu pago.</p>
     
-    <div class="bg-gray-50 p-6 rounded-2xl mb-8 inline-block min-w-[250px] border border-gray-200">
-      <p class="text-xs font-bold text-[var(--slate)] uppercase tracking-widest mb-1">CÓDIGO OFICIAL</p>
-      <p class="text-4xl font-display font-bold text-[var(--blue-deep)] tracking-widest" id="ticket-codigo">FIME-0000</p>
+    <!-- Caja del código arreglada -->
+    <div class="bg-gray-100 p-6 rounded-2xl mb-8 mx-auto w-fit min-w-[250px] border border-gray-200">
+      <p class="text-xs font-bold uppercase mb-2" style="color: #5C6B84;">CÓDIGO OFICIAL</p>
+      <!-- Se quitó tracking-widest para que html2canvas no desaparezca el texto -->
+      <p class="text-4xl font-display font-bold m-0" id="ticket-codigo" style="color: #102A54;">FIME-0000</p>
     </div>
 
     <div class="text-left bg-white border border-gray-200 p-6 rounded-2xl mb-2">
-      <h3 class="font-bold text-[var(--ink)] border-b pb-2 mb-4">Datos del Alumno</h3>
-      <p class="text-sm mb-1"><span class="font-semibold text-[var(--slate)]">Nombre:</span> <span id="ticket-nombre"></span></p>
-      <p class="text-sm mb-1"><span class="font-semibold text-[var(--slate)]">Matrícula:</span> <span id="ticket-matricula"></span></p>
-      <p class="text-sm mb-4"><span class="font-semibold text-[var(--slate)]">Celular:</span> <span id="ticket-telefono"></span></p>
+      <h3 class="font-bold border-b pb-2 mb-4" style="color: #0E1B33;">Datos del Alumno</h3>
+      <p class="text-sm mb-1"><span class="font-semibold" style="color: #5C6B84;">Nombre:</span> <span id="ticket-nombre" style="color: #0E1B33;"></span></p>
+      <p class="text-sm mb-1"><span class="font-semibold" style="color: #5C6B84;">Matrícula:</span> <span id="ticket-matricula" style="color: #0E1B33;"></span></p>
+      <p class="text-sm mb-4"><span class="font-semibold" style="color: #5C6B84;">Celular:</span> <span id="ticket-telefono" style="color: #0E1B33;"></span></p>
       
-      <h3 class="font-bold text-[var(--ink)] border-b pb-2 mb-4">Detalle del Carrito</h3>
-      <ul id="ticket-items" class="text-sm space-y-2 mb-4">
+      <h3 class="font-bold border-b pb-2 mb-4" style="color: #0E1B33;">Detalle del Carrito</h3>
+      <ul id="ticket-items" class="text-sm space-y-2 mb-4" style="color: #0E1B33;">
         <!-- Items inyectados -->
       </ul>
       <div class="text-right border-t pt-3">
-        <p class="font-bold text-xl text-[var(--blue-deep)]" id="ticket-total"></p>
+        <p class="font-bold text-xl" id="ticket-total" style="color: #102A54;"></p>
       </div>
     </div>
   </div>
 
-  <!-- BOTONES DE ACCIÓN (Fuera del ticket para que no salgan en la foto) -->
+  <!-- BOTONES DE ACCIÓN -->
   <div class="flex flex-col sm:flex-row gap-4 justify-center">
     <!-- Botón de Descargar -->
     <button onclick="descargarTicket()" class="bg-[var(--blue-deep)] text-white font-bold py-3 px-6 rounded-full hover:bg-[var(--blue)] transition flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
@@ -269,6 +272,7 @@
       listaItemsHTML += `<li>• ${item.cantidad}x ${item.nombre} (${item.color}, Talla: ${item.talla})</li>`;
     });
 
+    // Inyectar datos al HTML
     document.getElementById('ticket-codigo').innerText = codigo;
     document.getElementById('ticket-nombre').innerText = nombre;
     document.getElementById('ticket-matricula').innerText = matricula;
@@ -297,27 +301,26 @@
     window.scrollTo(0, 0);
   }
 
-  // --- FUNCIÓN MAGICA PARA DESCARGAR EL TICKET COMO IMAGEN ---
+  // Desplazar al tope y generar la imagen
   function descargarTicket() {
+    window.scrollTo(0, 0); // Evita bugs de corte si la pantalla está scrolleada
     const contenedorTicket = document.getElementById('ticket-capture');
     
-    // Convertimos el Div a un Canvas de imagen
     html2canvas(contenedorTicket, {
-      scale: 2, // Le damos más escala para que salga en HD
+      scale: 2,
       backgroundColor: "#ffffff",
-      useCORS: true // Por si hay bronca con las imágenes externas
+      useCORS: true
     }).then(canvas => {
-      // Creamos un link fantasma para forzar la descarga
       const enlace = document.createElement('a');
-      enlace.download = `Ticket_${datosPedidoActual.codigo}.png`; // Nombre del archivo
+      enlace.download = `Ticket_${datosPedidoActual.codigo}.png`;
       enlace.href = canvas.toDataURL('image/png');
-      enlace.click(); // Disparamos la descarga
+      enlace.click();
     });
   }
 
   function enviarRespaldoWhatsApp() {
     if(!datosPedidoActual) return;
-    let telefonoAdmin = "528661234567"; // AQUI PON EL WHATSAPP DE DIRECCIÓN
+    let telefonoAdmin = "528661234567"; // WHATSAPP DE DIRECCIÓN
     let mensaje = `🚨 *NUEVO PEDIDO FIME STORE* 🚨%0A%0A`;
     mensaje += `*CÓDIGO:* ${datosPedidoActual.codigo}%0A`;
     mensaje += `*Alumno:* ${datosPedidoActual.nombre}%0A`;

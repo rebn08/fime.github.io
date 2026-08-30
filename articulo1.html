@@ -26,7 +26,7 @@
   
   /* Estilos para selectores interactivos */
   .color-btn { transition: all 0.2s ease; }
-  .color-btn.selected { ring: 3px solid var(--blue-deep); transform: scale(1.1); box-shadow: 0 0 0 3px white, 0 0 0 6px var(--blue-deep); }
+  .color-btn.selected { transform: scale(1.1); box-shadow: 0 0 0 3px white, 0 0 0 6px var(--blue-deep); }
   
   .size-btn { transition: all 0.2s ease; }
   .size-btn.selected { background-color: var(--blue-deep); color: white; border-color: var(--blue-deep); }
@@ -71,23 +71,29 @@
 
   <div class="grid lg:grid-cols-12 gap-12 items-start">
     
-    <!-- COLUMNA IZQUIERDA: GALERÍA DE FOTOS (Estilo Shein) -->
+    <!-- COLUMNA IZQUIERDA: GALERÍA DE FOTOS (Cuadradas y sin slider inferior) -->
     <div class="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
-      <!-- Miniaturas verticales -->
-      <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto max-h-[550px]">
-        <button onclick="changeImage('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-24 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] flex-shrink-0 focus:outline-none">
+      <!-- 5 Miniaturas en cuadros exactos -->
+      <div class="flex md:flex-col gap-3 overflow-hidden">
+        <button onclick="changeImage('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] focus:outline-none flex-shrink-0 bg-gray-100">
           <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 1">
         </button>
-        <button onclick="changeImage('https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-24 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] flex-shrink-0 focus:outline-none">
+        <button onclick="changeImage('https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] focus:outline-none flex-shrink-0 bg-gray-100">
           <img src="https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 2">
         </button>
-        <button onclick="changeImage('https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-24 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] flex-shrink-0 focus:outline-none">
+        <button onclick="changeImage('https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] focus:outline-none flex-shrink-0 bg-gray-100">
           <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 3">
+        </button>
+        <button onclick="changeImage('https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] focus:outline-none flex-shrink-0 bg-gray-100">
+          <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 4">
+        </button>
+        <button onclick="changeImage('https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1000&auto=format&fit=crop')" class="thumbnail w-20 h-20 rounded-xl overflow-hidden border-2 border-transparent hover:border-[var(--blue)] focus:outline-none flex-shrink-0 bg-gray-100">
+          <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 5">
         </button>
       </div>
 
       <!-- Imagen Principal Grande -->
-      <div class="flex-grow rounded-2xl overflow-hidden shadow-lg bg-gray-100 h-[450px] md:h-[550px] relative">
+      <div class="flex-grow rounded-2xl overflow-hidden shadow-lg bg-gray-100 h-[450px] md:h-[520px] relative">
         <img id="mainImage" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-all duration-500" alt="Hoodie FIME Principal">
         <span class="absolute top-4 right-4 bg-[var(--blue-deep)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Colección Oficial</span>
       </div>

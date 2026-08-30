@@ -63,9 +63,17 @@
       <a href="contacto.html" class="nav-link">Contacto</a>
     </div>
 
-    <div class="flex items-center gap-3">
-      <a href="tienda.html" class="text-white/80 hover:text-white text-sm font-medium flex items-center gap-2">
-        &larr; Volver a la tienda
+    <!-- BOTONES DERECHA: Volver a tienda y CARRITO -->
+    <div class="flex items-center gap-6">
+      <a href="tienda.html" class="hidden md:inline-flex text-white/80 hover:text-white text-sm font-medium items-center gap-2 transition">
+        &larr; Volver
+      </a>
+      
+      <!-- Icono del Carrito de Compras -->
+      <a href="carrito.html" class="relative text-white hover:text-[var(--yellow)] transition focus:outline-none" title="Ver mi carrito">
+        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        <!-- Bolita del contador -->
+        <span id="cart-counter" class="absolute -top-2 -right-2 bg-[var(--yellow)] text-[var(--blue-deep)] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
       </a>
     </div>
   </nav>
@@ -86,7 +94,7 @@
     <!-- COLUMNA IZQUIERDA: GALERÍA DE FOTOS -->
     <div class="lg:col-span-7 flex flex-col-reverse md:flex-row gap-4">
       
-      <!-- 5 Miniaturas en cuadros exactos rellenados -->
+      <!-- 5 Miniaturas -->
       <div class="flex md:flex-col gap-3 overflow-x-auto md:overflow-visible py-1 w-full md:w-20 flex-shrink-0">
         <button onclick="changeImage(this, 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop')" class="thumbnail active w-20 h-20 rounded-lg focus:outline-none flex-shrink-0 p-0 border-2 overflow-hidden bg-gray-100">
           <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Vista 1">
@@ -105,7 +113,7 @@
         </button>
       </div>
 
-      <!-- IMAGEN PRINCIPAL: Contenedor estricto con rellenado completo -->
+      <!-- IMAGEN PRINCIPAL -->
       <div class="flex-grow rounded-2xl overflow-hidden shadow-sm bg-gray-50 border border-gray-200 h-[400px] md:h-[550px] relative">
         <img id="mainImage" src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover transition-all duration-300" alt="Hoodie FIME Principal">
         <span class="absolute top-4 right-4 bg-[var(--blue-deep)] text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">Colección Oficial</span>
@@ -118,8 +126,8 @@
       <h1 class="font-display text-3xl font-semibold text-[var(--blue-deep)] mb-3">Hoodie Pesada Institucional FIME</h1>
       
       <div class="flex items-baseline gap-4 mb-6">
-        <span class="text-3xl font-bold text-[var(--blue-deep)]">$650 MXN</span>
-        <span class="text-xs bg-green-100 text-green-800 font-semibold px-2.5 py-1 rounded-full">Disponible para apartado</span>
+        <span class="text-3xl font-bold text-[var(--blue-deep)]" id="productPrice" data-price="650">$650 MXN</span>
+        <span class="text-xs bg-green-100 text-green-800 font-semibold px-2.5 py-1 rounded-full">Disponible en stock</span>
       </div>
 
       <p class="text-[var(--slate)] text-sm leading-relaxed mb-6 border-b pb-6">
@@ -154,8 +162,9 @@
 
       <!-- BOTONES DE ACCIÓN -->
       <div class="space-y-3">
-        <button onclick="alert('¡Artículo apartado con éxito! Te contactaremos para coordinar entrega en campus, Inge.')" class="w-full bg-[var(--yellow)] text-[var(--blue-deep)] font-bold py-4 rounded-full hover:brightness-105 active:scale-95 transition shadow-lg text-center block">
-          Apartar Producto
+        <!-- AQUÍ ESTÁ LA MAGIA PARA MANDARLO AL CARRITO -->
+        <button onclick="agregarAlCarrito()" class="w-full bg-[var(--yellow)] text-[var(--blue-deep)] font-bold py-4 rounded-full hover:brightness-105 active:scale-95 transition shadow-lg text-center block focus:outline-none">
+          Añadir al Carrito
         </button>
         <a href="tienda.html" class="w-full border border-gray-300 text-[var(--ink)] font-medium py-3 rounded-full hover:bg-gray-50 transition text-center block text-sm">
           Seguir viendo la tienda
@@ -175,7 +184,7 @@
 </footer>
 
 <script>
-  // Cambiar imagen principal sin brincos
+  // Cambiar imagen
   function changeImage(element, src) {
     document.querySelectorAll('.thumbnail').forEach(thumb => thumb.classList.remove('active'));
     element.classList.add('active');
@@ -200,6 +209,79 @@
     document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
   }
+
+  // -------------------------------------------------------------
+  // LÓGICA DEL CARRITO (LOCALSTORAGE)
+  // -------------------------------------------------------------
+  function actualizarContadorCarrito() {
+    let carrito = JSON.parse(localStorage.getItem('fimeCart')) || [];
+    let totalItems = carrito.reduce((acc, item) => acc + item.cantidad, 0);
+    const counter = document.getElementById('cart-counter');
+    if(counter) {
+      counter.innerText = totalItems;
+      // Pequeño efecto visual si está lleno
+      if(totalItems > 0) {
+        counter.classList.add('animate-bounce');
+        setTimeout(() => counter.classList.remove('animate-bounce'), 1000);
+      }
+    }
+  }
+
+  function agregarAlCarrito() {
+    // 1. Agarrar los datos del producto
+    const nombreProd = "Hoodie Pesada Institucional FIME";
+    const precioProd = parseInt(document.getElementById('productPrice').getAttribute('data-price'));
+    const colorSeleccionado = document.getElementById('selectedColorName').innerText;
+    const imagenSrc = document.getElementById('mainImage').src; // Agarra la foto que esté viéndose
+    
+    const tallaBtn = document.querySelector('.size-btn.selected');
+    if (!tallaBtn) {
+      alert("Por favor selecciona una talla, Inge.");
+      return;
+    }
+    const tallaSeleccionada = tallaBtn.innerText;
+
+    // 2. Armar el objeto
+    const producto = {
+      id: "hoodie_01", // Id para diferenciarlo de una playera o gorra
+      nombre: nombreProd,
+      precio: precioProd,
+      color: colorSeleccionado,
+      talla: tallaSeleccionada,
+      imagen: imagenSrc,
+      cantidad: 1
+    };
+
+    // 3. Traer el carrito actual o crear uno nuevo vacío
+    let carrito = JSON.parse(localStorage.getItem('fimeCart')) || [];
+
+    // 4. Checar si ya metió el mismo producto, del mismo color y talla
+    const indexExistente = carrito.findIndex(item => 
+      item.id === producto.id && 
+      item.color === producto.color && 
+      item.talla === producto.talla
+    );
+
+    if (indexExistente !== -1) {
+      // Si ya existe, le sumamos 1 a la cantidad
+      carrito[indexExistente].cantidad += 1;
+    } else {
+      // Si no existe, lo empujamos al arreglo
+      carrito.push(producto);
+    }
+
+    // 5. Guardar otra vez en la memoria del navegador
+    localStorage.setItem('fimeCart', JSON.stringify(carrito));
+
+    // 6. Actualizar bolita de la navbar y avisarle al usuario
+    actualizarContadorCarrito();
+    alert("¡Al tiro, Borre! La hoodie se agregó a tu carrito de compras.");
+  }
+
+  // Al cargar la página, checamos cuántos items hay guardados
+  document.addEventListener("DOMContentLoaded", () => {
+    actualizarContadorCarrito();
+  });
 </script>
 
 </body>

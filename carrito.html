@@ -6,6 +6,8 @@
 <title>Mi Carrito - FIME Store</title>
 <link rel="icon" href="https://i.postimg.cc/P5FWnG14/fimeblanco.png" type="image/png">
 <script src="https://cdn.tailwindcss.com"></script>
+<!-- Librería para convertir HTML a Imagen -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -94,23 +96,29 @@
   </div>
 </main>
 
-<!-- VISTA DEL TICKET FINAL (Oculta por defecto) -->
+<!-- VISTA DEL TICKET FINAL -->
 <main id="vista-ticket" class="max-w-3xl mx-auto px-5 md:px-8 pt-32 pb-24 min-h-[70vh] hidden">
-  <div class="bg-white p-8 md:p-10 rounded-3xl shadow-2xl border-t-8 border-[var(--blue-deep)] text-center relative overflow-hidden">
+  
+  <!-- ESTE ES EL DIV QUE SE CONVIERTE EN IMAGEN -->
+  <div id="ticket-capture" class="bg-white p-8 md:p-10 rounded-3xl shadow-sm border-t-8 border-[var(--blue-deep)] text-center relative overflow-hidden mb-8">
     <!-- Fondo decorativo -->
     <div class="absolute -top-10 -right-10 opacity-10">
       <svg class="w-40 h-40" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13.5H5.5L12 6.5z"/></svg>
     </div>
+    <!-- Escudo FIME (opcional si quieres que salga en la foto) -->
+    <div class="flex justify-center mb-4">
+      <img src="https://i.postimg.cc/P5FWnG14/fimeblanco.png" style="filter: brightness(0) invert(0);" class="h-12 opacity-80" alt="Logo FIME">
+    </div>
 
-    <h2 class="font-display text-3xl font-bold text-[var(--ink)] mb-2">¡Pedido Generado!</h2>
-    <p class="text-[var(--slate)] mb-8">Toma captura de pantalla de este ticket y preséntalo en Dirección Administrativa para realizar tu pago.</p>
+    <h2 class="font-display text-3xl font-bold text-[var(--ink)] mb-2">Comprobante de Pedido</h2>
+    <p class="text-[var(--slate)] mb-8">Presenta este código en Dirección Administrativa de la FIME Monclova para realizar tu pago.</p>
     
     <div class="bg-gray-50 p-6 rounded-2xl mb-8 inline-block min-w-[250px] border border-gray-200">
-      <p class="text-xs font-bold text-[var(--slate)] uppercase tracking-widest mb-1">CÓDIGO DE PEDIDO</p>
+      <p class="text-xs font-bold text-[var(--slate)] uppercase tracking-widest mb-1">CÓDIGO OFICIAL</p>
       <p class="text-4xl font-display font-bold text-[var(--blue-deep)] tracking-widest" id="ticket-codigo">FIME-0000</p>
     </div>
 
-    <div class="text-left bg-white border border-gray-200 p-6 rounded-2xl shadow-sm mb-8">
+    <div class="text-left bg-white border border-gray-200 p-6 rounded-2xl mb-2">
       <h3 class="font-bold text-[var(--ink)] border-b pb-2 mb-4">Datos del Alumno</h3>
       <p class="text-sm mb-1"><span class="font-semibold text-[var(--slate)]">Nombre:</span> <span id="ticket-nombre"></span></p>
       <p class="text-sm mb-1"><span class="font-semibold text-[var(--slate)]">Matrícula:</span> <span id="ticket-matricula"></span></p>
@@ -121,20 +129,30 @@
         <!-- Items inyectados -->
       </ul>
       <div class="text-right border-t pt-3">
-        <p class="font-bold text-lg text-[var(--blue-deep)]" id="ticket-total"></p>
+        <p class="font-bold text-xl text-[var(--blue-deep)]" id="ticket-total"></p>
       </div>
     </div>
-
-    <!-- BOTÓN PARA MANDAR EL RESPALDO A DIRECCIÓN -->
-    <button onclick="enviarRespaldoWhatsApp()" class="bg-[#25D366] text-white font-bold py-3 px-8 rounded-full hover:bg-[#1EBE57] transition flex items-center justify-center gap-2 mx-auto shadow-lg">
-      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.305-.885-.653-1.482-1.459-1.656-1.756-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-      Enviar Respaldo a Dirección
-    </button>
-    <p class="text-xs text-[var(--slate)] mt-3">Importante: Envía este mensaje para que administración reciba los datos de tu carrito.</p>
   </div>
+
+  <!-- BOTONES DE ACCIÓN (Fuera del ticket para que no salgan en la foto) -->
+  <div class="flex flex-col sm:flex-row gap-4 justify-center">
+    <!-- Botón de Descargar -->
+    <button onclick="descargarTicket()" class="bg-[var(--blue-deep)] text-white font-bold py-3 px-6 rounded-full hover:bg-[var(--blue)] transition flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+      Descargar Ticket
+    </button>
+    
+    <!-- Botón de WhatsApp -->
+    <button onclick="enviarRespaldoWhatsApp()" class="bg-[#25D366] text-white font-bold py-3 px-6 rounded-full hover:bg-[#1EBE57] transition flex items-center justify-center gap-2 shadow-lg w-full sm:w-auto">
+      <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.305-.885-.653-1.482-1.459-1.656-1.756-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+      Avisar a Dirección
+    </button>
+  </div>
+  <p class="text-xs text-center text-[var(--slate)] mt-4">Paso 1: Descarga tu ticket. Paso 2: Avisa por WhatsApp.</p>
+
 </main>
 
-<!-- MODAL DE CHECKOUT (Formulario de Datos) -->
+<!-- MODAL DE CHECKOUT -->
 <div id="modal-checkout" class="fixed inset-0 z-[100] bg-[var(--ink)]/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
   <div class="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl modal-enter">
     <div class="bg-[var(--blue-deep)] p-4 flex justify-between items-center text-white">
@@ -167,7 +185,7 @@
 
 <script>
   let carrito = JSON.parse(localStorage.getItem('fimeCart')) || [];
-  let datosPedidoActual = null; // Guardará el código y total para el WhatsApp
+  let datosPedidoActual = null;
 
   function renderizarCarrito() {
     const container = document.getElementById('cart-items-container');
@@ -222,9 +240,7 @@
     renderizarCarrito();
   }
 
-  // LÓGICA DEL MODAL Y PEDIDO
   const modal = document.getElementById('modal-checkout');
-  
   function abrirModalCheckout() { modal.classList.remove('hidden'); }
   function cerrarModalCheckout() { modal.classList.add('hidden'); }
 
@@ -238,15 +254,13 @@
   }
 
   function procesarPedido(event) {
-    event.preventDefault(); // Evita que la página se recargue
+    event.preventDefault();
 
-    // 1. Obtener datos
     const nombre = document.getElementById('input-nombre').value;
     const matricula = document.getElementById('input-matricula').value;
     const telefono = document.getElementById('input-telefono').value;
     const codigo = generarCodigoRandom();
 
-    // 2. Calcular total
     let total = 0;
     let listaItemsHTML = '';
     
@@ -255,7 +269,6 @@
       listaItemsHTML += `<li>• ${item.cantidad}x ${item.nombre} (${item.color}, Talla: ${item.talla})</li>`;
     });
 
-    // 3. Llenar el Ticket en pantalla
     document.getElementById('ticket-codigo').innerText = codigo;
     document.getElementById('ticket-nombre').innerText = nombre;
     document.getElementById('ticket-matricula').innerText = matricula;
@@ -263,47 +276,57 @@
     document.getElementById('ticket-items').innerHTML = listaItemsHTML;
     document.getElementById('ticket-total').innerText = `Total a Pagar: $${total}.00 MXN`;
 
-    // 4. Guardar info temporal para el WhatsApp
     datosPedidoActual = {
       codigo: codigo,
       nombre: nombre,
       matricula: matricula,
       telefono: telefono,
       total: total,
-      items: carrito.slice() // Clonamos el carrito
+      items: carrito.slice()
     };
 
-    // 5. Vaciar carrito de la memoria
     localStorage.removeItem('fimeCart');
     carrito = [];
 
-    // 6. Cambiar Vistas
     cerrarModalCheckout();
     document.getElementById('vista-carrito').classList.remove('block');
     document.getElementById('vista-carrito').classList.add('hidden');
     document.getElementById('vista-ticket').classList.remove('hidden');
     document.getElementById('vista-ticket').classList.add('block');
     
-    window.scrollTo(0, 0); // Subir la pantalla para que vean el ticket
+    window.scrollTo(0, 0);
   }
 
-  // Mandar los datos directo a la administración
+  // --- FUNCIÓN MAGICA PARA DESCARGAR EL TICKET COMO IMAGEN ---
+  function descargarTicket() {
+    const contenedorTicket = document.getElementById('ticket-capture');
+    
+    // Convertimos el Div a un Canvas de imagen
+    html2canvas(contenedorTicket, {
+      scale: 2, // Le damos más escala para que salga en HD
+      backgroundColor: "#ffffff",
+      useCORS: true // Por si hay bronca con las imágenes externas
+    }).then(canvas => {
+      // Creamos un link fantasma para forzar la descarga
+      const enlace = document.createElement('a');
+      enlace.download = `Ticket_${datosPedidoActual.codigo}.png`; // Nombre del archivo
+      enlace.href = canvas.toDataURL('image/png');
+      enlace.click(); // Disparamos la descarga
+    });
+  }
+
   function enviarRespaldoWhatsApp() {
     if(!datosPedidoActual) return;
-
-    let telefonoAdmin = "528661234567"; // AQUI PON EL WHATSAPP DE DIRECCIÓN / ADMINISTRACIÓN
-    
+    let telefonoAdmin = "528661234567"; // AQUI PON EL WHATSAPP DE DIRECCIÓN
     let mensaje = `🚨 *NUEVO PEDIDO FIME STORE* 🚨%0A%0A`;
     mensaje += `*CÓDIGO:* ${datosPedidoActual.codigo}%0A`;
     mensaje += `*Alumno:* ${datosPedidoActual.nombre}%0A`;
     mensaje += `*Matrícula:* ${datosPedidoActual.matricula}%0A`;
     mensaje += `*Celular:* ${datosPedidoActual.telefono}%0A%0A`;
-    
     mensaje += `*CARRITO:*%0A`;
     datosPedidoActual.items.forEach(item => {
       mensaje += `- ${item.cantidad}x ${item.nombre} (${item.color}, Talla: ${item.talla}) = $${item.precio * item.cantidad} MXN%0A`;
     });
-    
     mensaje += `%0A💰 *TOTAL A COBRAR: $${datosPedidoActual.total} MXN*%0A`;
 
     let url = `https://wa.me/${telefonoAdmin}?text=${mensaje}`;

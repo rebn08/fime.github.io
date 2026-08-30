@@ -67,7 +67,6 @@
       <a href="contacto.html" class="nav-link">Contacto</a>
     </div>
 
-    <!-- Menú móvil (Sin botón de Ver Colección arriba) -->
     <div class="flex items-center gap-3">
       <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false" class="md:hidden text-white p-2">
         <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -136,11 +135,11 @@
     <span class="text-sm text-[var(--slate)] font-medium hidden sm:block">Envíos disponibles en campus y región norte</span>
   </div>
 
-  <!-- SECCIÓN: PARA LEO_NES -->
+  <!-- SECCIÓN: PARA LEONES -->
   <div class="mb-20 fade-up">
     <div class="flex items-center gap-4 mb-8">
       <div class="bg-[var(--blue-deep)] text-[var(--yellow)] px-5 py-2 rounded-xl font-display text-2xl font-semibold shadow-md">
-        🦁 Para Leones
+        Para Leones
       </div>
       <div class="h-[2px] bg-gray-200 flex-grow"></div>
     </div>
@@ -221,10 +220,10 @@
   </div>
 
   <!-- SECCIÓN: PARA LEONAS -->
-  <div class="mb-10 fade-up">
+  <div class="mb-20 fade-up">
     <div class="flex items-center gap-4 mb-8">
       <div class="bg-[var(--blue-deep)] text-[var(--yellow)] px-5 py-2 rounded-xl font-display text-2xl font-semibold shadow-md">
-        👑 Para Leonas
+        Para Leonas
       </div>
       <div class="h-[2px] bg-gray-200 flex-grow"></div>
     </div>
@@ -281,6 +280,71 @@
         </div>
         <h4 class="font-display text-base font-semibold text-[var(--slate)] mb-1">Próximamente</h4>
         <p class="text-xs text-gray-400">Más artículos exclusivos para la sección de Leonas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN: ACCESORIOS -->
+  <div class="mb-10 fade-up">
+    <div class="flex items-center gap-4 mb-8">
+      <div class="bg-[var(--blue-deep)] text-[var(--yellow)] px-5 py-2 rounded-xl font-display text-2xl font-semibold shadow-md">
+        Accesorios y Souvenirs
+      </div>
+      <div class="h-[2px] bg-gray-200 flex-grow"></div>
+    </div>
+    
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Accesorio 1 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-black/5 shadow-md flex flex-col justify-between">
+        <div class="h-60 overflow-hidden relative bg-gray-100">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=1000&auto=format&fit=crop" alt="Mochila FIME" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+          <span class="absolute top-3 right-3 bg-[var(--yellow)] text-[var(--blue-deep)] text-xs font-bold px-2.5 py-1 rounded-full">Popular</span>
+        </div>
+        <div class="p-5 flex flex-col justify-between flex-grow">
+          <div>
+            <h4 class="font-display text-lg font-semibold text-[var(--ink)] mb-1">Mochila Porta Laptop FIME</h4>
+            <p class="text-xs text-[var(--slate)] mb-4">Compartimento acolchado para laptop de hasta 15.6" y diseño ergonómico.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-base font-bold text-[var(--blue-deep)]">$750 MXN</span>
+            <button onclick="alert('¡Próximamente disponible para pedido, Inge!')" class="bg-[var(--blue-deep)] text-white text-xs font-semibold px-3 py-2 rounded-full hover:bg-[var(--blue)] transition">Apartar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accesorio 2 -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-black/5 shadow-md flex flex-col justify-between">
+        <div class="h-60 overflow-hidden relative bg-gray-100">
+          <img src="https://images.unsplash.com/photo-1514517513253-adc07212b8dc?q=80&w=1000&auto=format&fit=crop" alt="Llavero FIME" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+          <span class="absolute top-3 right-3 bg-[var(--yellow)] text-[var(--blue-deep)] text-xs font-bold px-2.5 py-1 rounded-full">Coleccionable</span>
+        </div>
+        <div class="p-5 flex flex-col justify-between flex-grow">
+          <div>
+            <h4 class="font-display text-lg font-semibold text-[var(--ink)] mb-1">Llavero Metálico Escudo</h4>
+            <p class="text-xs text-[var(--slate)] mb-4">Llavero de aleación metálica con el emblema grabado en láser.</p>
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-base font-bold text-[var(--blue-deep)]">$120 MXN</span>
+            <button onclick="alert('¡Próximamente disponible para pedido, Inge!')" class="bg-[var(--blue-deep)] text-white text-xs font-semibold px-3 py-2 rounded-full hover:bg-[var(--blue)] transition">Apartar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Espacio para más accesorios -->
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-dashed border-gray-300 shadow-sm flex flex-col items-center justify-center p-6 text-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 mb-3">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </div>
+        <h4 class="font-display text-base font-semibold text-[var(--slate)] mb-1">Próximamente</h4>
+        <p class="text-xs text-gray-400">Más accesorios oficiales en camino.</p>
+      </div>
+
+      <div class="product-card bg-white rounded-2xl overflow-hidden border border-dashed border-gray-300 shadow-sm flex flex-col items-center justify-center p-6 text-center">
+        <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 mb-3">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+        </div>
+        <h4 class="font-display text-base font-semibold text-[var(--slate)] mb-1">Próximamente</h4>
+        <p class="text-xs text-gray-400">Más accesorios oficiales en camino.</p>
       </div>
     </div>
   </div>
